@@ -433,6 +433,36 @@ setTimeout(checkMotion,100);
   modalClose.addEventListener('click',closeScatterModal);
   modal.addEventListener('click',e=>{if(e.target===modal) closeScatterModal();});
   addEventListener('keydown',e=>{if(e.key==='Escape' && modal.classList.contains('on')) closeScatterModal();});
+
+  // cursor parallax — cards nearer the front of the pile (higher data-z)
+  // drift further, giving the pile a subtle sense of depth as the pointer
+  // moves. Desktop pointer only; skipped entirely under reduced-motion.
+  if(!reduce && matchMedia('(pointer:fine)').matches){
+    const stageEl=stage.querySelector('.scatter-stage');
+    if(stageEl){
+      let tx=0,ty=0,cx=0,cy=0,raf=null;
+      const btns=cards.map(c=>({btn:c.querySelector('.scatter-btn'),depth:(parseInt(c.dataset.z)||20)/45}));
+      function tick(){
+        cx+=(tx-cx)*0.08; cy+=(ty-cy)*0.08;
+        btns.forEach(({btn,depth})=>{
+          if(!btn) return;
+          btn.style.setProperty('--px',(cx*10*depth).toFixed(2)+'px');
+          btn.style.setProperty('--py',(cy*8*depth).toFixed(2)+'px');
+        });
+        raf=(Math.abs(tx-cx)>0.001||Math.abs(ty-cy)>0.001)?requestAnimationFrame(tick):null;
+      }
+      stageEl.addEventListener('mousemove',e=>{
+        const r=stageEl.getBoundingClientRect();
+        tx=((e.clientX-r.left)/r.width-0.5)*2;
+        ty=((e.clientY-r.top)/r.height-0.5)*2;
+        if(!raf) raf=requestAnimationFrame(tick);
+      },{passive:true});
+      stageEl.addEventListener('mouseleave',()=>{
+        tx=0; ty=0;
+        if(!raf) raf=requestAnimationFrame(tick);
+      },{passive:true});
+    }
+  }
 })();
 
 // === PHOTOGRAPHY GALLERY CAROUSEL — center-card focus + arrow nav ===

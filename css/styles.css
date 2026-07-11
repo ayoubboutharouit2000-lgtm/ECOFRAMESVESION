@@ -63,8 +63,8 @@ video{display:block;max-width:100%;background:#000}
 }
 .kicker::before{content:"";width:26px;height:1px;background:var(--terra)}
 .serif{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400}
-.display{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;line-height:.96;letter-spacing:-.02em}
-.reel-no{font-family:"Bricolage Grotesque",sans-serif;font-variant-numeric:tabular-nums}
+.display{font-family:"Montenegrin Gothic One",sans-serif;font-weight:700;line-height:.96;letter-spacing:-.02em}
+.reel-no{font-family:"Montenegrin Gothic One",sans-serif;font-variant-numeric:tabular-nums}
 
 /* ---------- nav ---------- */
 header.nav{
@@ -77,7 +77,7 @@ header.nav.scrolled{
   border-bottom:1px solid var(--line-2);
 }
 .nav-inner{display:flex;align-items:center;justify-content:space-between;height:78px}
-.brand{display:flex;align-items:center;gap:12px;font-family:"Bricolage Grotesque",sans-serif;font-weight:700;letter-spacing:-.01em}
+.brand{display:flex;align-items:center;gap:12px;font-family:"Montenegrin Gothic One",sans-serif;font-weight:700;letter-spacing:-.01em}
 .brand .mark{
   width:30px;height:30px;border:1.5px solid var(--ink);border-radius:50%;
   display:grid;place-items:center;position:relative;flex:none;
@@ -117,11 +117,11 @@ nav.links a:hover::after{width:100%}
 .rec{display:flex;align-items:center;gap:9px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink-soft);font-weight:500}
 .rec .b{width:9px;height:9px;border-radius:50%;background:#E11D48;animation:blink 1.4s steps(1) infinite}
 @keyframes blink{50%{opacity:.25}}
-.tcode{font-family:"Bricolage Grotesque",sans-serif;font-variant-numeric:tabular-nums;font-size:12px;letter-spacing:.12em;color:var(--ink-soft)}
+.tcode{font-family:"Montenegrin Gothic One",sans-serif;font-variant-numeric:tabular-nums;font-size:12px;letter-spacing:.12em;color:var(--ink-soft)}
 
 .hero-body{position:relative;z-index:3;padding-bottom:clamp(40px,7vh,84px)}
 .hero-body .wrap{display:flex;flex-direction:column;gap:clamp(22px,4vh,40px)}
-.hero-h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;line-height:.92;letter-spacing:-.025em;font-size:clamp(48px,8.6vw,138px)}
+.hero-h1{font-family:"Montenegrin Gothic One",sans-serif;font-weight:700;line-height:.92;letter-spacing:-.025em;font-size:clamp(48px,8.6vw,138px)}
 .hero-h1 .serif{font-size:.92em;letter-spacing:0;color:var(--sand)}
 .hero-h1 .em{color:var(--terra)}
 .hero-row{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
@@ -168,7 +168,7 @@ nav.links a:hover::after{width:100%}
 .ed-particles{position:absolute;inset:0;z-index:1;pointer-events:none}
 .ed-bigtype{will-change:opacity}
 .ed-bigtype{position:absolute;top:50%;left:50%;transform:translate(-50%,-54%);z-index:1;
-  font-family:"Bricolage Grotesque",sans-serif;font-weight:800;line-height:.8;letter-spacing:-.03em;
+  font-family:"Montenegrin Gothic One",sans-serif;font-weight:800;line-height:.8;letter-spacing:-.03em;
   font-size:clamp(140px,30vw,460px);white-space:nowrap;user-select:none;pointer-events:none;
   background:linear-gradient(100deg,#E11D48 0%,#f43068 22%,#8B5CF6 46%,#c4b5fd 62%,#E11D48 86%,#f43068 100%);
   background-size:280% 100%;
@@ -202,7 +202,7 @@ nav.links a:hover::after{width:100%}
 .ed-over{position:absolute;top:clamp(108px,15vh,150px);left:clamp(20px,5vw,64px);z-index:4;max-width:24ch}
 .ed-over .k{font-family:"DM Mono",monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--terra);margin-bottom:14px;display:flex;align-items:center;gap:10px}
 .ed-over .k::before{content:"";width:22px;height:1px;background:var(--terra)}
-.ed-over h1{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.0;font-size:clamp(26px,3vw,44px)}
+.ed-over h1{font-family:"Montenegrin Gothic One",sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1.0;font-size:clamp(26px,3vw,44px)}
 .ed-over h1 .serif{color:var(--sand)}
 .ed-over h1 .em{color:var(--terra)}
 /* headline typing effect */
@@ -232,7 +232,7 @@ nav.links a:hover::after{width:100%}
 /* ---------- marquee ---------- */
 .marquee{border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2);padding:22px 0;overflow:hidden;white-space:nowrap;background:var(--bg-2)}
 .marquee .track{display:inline-flex;gap:54px;animation:scroll 28s linear infinite;will-change:transform}
-.marquee .item{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:clamp(18px,2vw,26px);color:var(--ink-soft);display:inline-flex;align-items:center;gap:54px;letter-spacing:-.01em}
+.marquee .item{font-family:"Montenegrin Gothic One",sans-serif;font-weight:600;font-size:clamp(18px,2vw,26px);color:var(--ink-soft);display:inline-flex;align-items:center;gap:54px;letter-spacing:-.01em}
 .marquee .item::after{content:"✳";color:var(--terra);font-size:.7em}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
@@ -240,8 +240,8 @@ nav.links a:hover::after{width:100%}
 section{position:relative}
 .sec-head{display:flex;align-items:flex-end;justify-content:space-between;gap:30px;flex-wrap:wrap;margin-bottom:clamp(40px,6vh,72px)}
 .sec-head .lead{max-width:560px}
-.sec-title{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1;font-size:clamp(34px,5.2vw,76px);margin-top:18px}
-.sec-num{font-family:"Bricolage Grotesque",sans-serif;font-size:13px;color:var(--muted);letter-spacing:.1em;font-variant-numeric:tabular-nums}
+.sec-title{font-family:"Montenegrin Gothic One",sans-serif;font-weight:700;letter-spacing:-.025em;line-height:1;font-size:clamp(34px,5.2vw,76px);margin-top:18px}
+.sec-num{font-family:"Montenegrin Gothic One",sans-serif;font-size:13px;color:var(--muted);letter-spacing:.1em;font-variant-numeric:tabular-nums}
 
 /* ---------- testimonials ---------- */
 .testi{padding:clamp(80px,12vh,150px) 0;position:relative;overflow:hidden}
@@ -262,9 +262,9 @@ section{position:relative}
 .testi-card blockquote .hl{color:var(--ink);font-style:italic;font-family:"Instrument Serif",serif;font-size:1.06em}
 .testi-who{display:flex;align-items:center;gap:14px;padding-top:4px;border-top:1px solid var(--line-2)}
 .testi-av{width:46px;height:46px;border-radius:50%;flex:none;display:grid;place-items:center;
-  font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:16px;color:#fff;
+  font-family:"Montenegrin Gothic One",sans-serif;font-weight:700;font-size:16px;color:#fff;
   background:linear-gradient(135deg,var(--terra),var(--gold))}
-.testi-who .nm{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:15.5px;letter-spacing:-.01em}
+.testi-who .nm{font-family:"Montenegrin Gothic One",sans-serif;font-weight:600;font-size:15.5px;letter-spacing:-.01em}
 .testi-who .rl{font-family:"DM Mono",monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-top:3px}
 .testi-card{opacity:0;transform:translateY(40px)}
 .testi-card.in{opacity:1;transform:translateY(0);transition:opacity .8s var(--ease),transform .8s var(--ease),border-color .45s var(--ease),box-shadow .5s var(--ease)}
@@ -276,7 +276,7 @@ section{position:relative}
 /* ---------- statement ---------- */
 .statement{padding:clamp(90px,14vh,170px) 0}
 .statement .big{
-  font-family:"Bricolage Grotesque",sans-serif;font-weight:500;letter-spacing:-.02em;line-height:1.06;
+  font-family:"Montenegrin Gothic One",sans-serif;font-weight:500;letter-spacing:-.02em;line-height:1.06;
   font-size:clamp(28px,4.4vw,62px);max-width:16ch;
 }
 .statement .big .serif{color:var(--terra);font-weight:400}
@@ -296,7 +296,7 @@ section{position:relative}
 .piece:hover .meta{transform:translateY(0)}
 .piece .cat{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:8px;display:flex;align-items:center;gap:10px}
 .piece .cat::before{content:"";width:18px;height:1px;background:var(--gold)}
-.piece .pt{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:clamp(20px,2vw,30px);letter-spacing:-.01em;line-height:1.04}
+.piece .pt{font-family:"Montenegrin Gothic One",sans-serif;font-weight:600;font-size:clamp(20px,2vw,30px);letter-spacing:-.01em;line-height:1.04}
 .piece .loc{color:var(--ink-soft);font-size:13px;margin-top:6px}
 .piece .open{position:absolute;top:18px;right:18px;z-index:3;width:42px;height:42px;border-radius:50%;border:1px solid rgba(243,235,217,.3);
   display:grid;place-items:center;background:rgba(10,10,10,.35);backdrop-filter:blur(6px);transform:scale(.7) rotate(-12deg);opacity:0;transition:.5s var(--ease)}
@@ -331,7 +331,7 @@ section{position:relative}
 .photo-gallery .gallery-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:clamp(16px,2vw,28px)}
 .photo-gallery .gallery-head .cat{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500;display:flex;align-items:center;gap:10px}
 .photo-gallery .gallery-head .cat::before{content:"";width:18px;height:1px;background:var(--gold)}
-.photo-gallery .gallery-head .pt{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:clamp(20px,2.4vw,32px);letter-spacing:-.01em}
+.photo-gallery .gallery-head .pt{font-family:"Montenegrin Gothic One",sans-serif;font-weight:600;font-size:clamp(20px,2.4vw,32px);letter-spacing:-.01em}
 .photo-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:clamp(8px,1vw,14px)}
 .photo-grid .ph-item{position:relative;overflow:hidden;aspect-ratio:3/4;cursor:pointer;background:var(--bg-3)}
 .photo-grid .ph-item img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease),filter .5s;filter:blur(6px) brightness(.8)}
@@ -353,11 +353,17 @@ section{position:relative}
   padding:clamp(28px,4vh,46px) 0;border-bottom:1px solid var(--line);position:relative;cursor:default;
   transition:.5s var(--ease);
 }
-.svc::before{content:"";position:absolute;left:-100vw;right:-100vw;top:0;bottom:0;background:var(--bg-2);opacity:0;transition:.5s var(--ease);z-index:-1}
-.svc:hover::before{opacity:1}
-.svc .n{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.05em;align-self:flex-start;padding-top:8px}
+/* per-service hover background — --svc-bg is set inline per .svc row */
+.svc::before{content:"";position:absolute;left:-100vw;right:-100vw;top:0;bottom:0;
+  background-color:var(--bg-2);
+  background-image:linear-gradient(90deg,rgba(10,10,10,.84) 0%,rgba(10,10,10,.58) 45%,rgba(10,10,10,.84) 100%),var(--svc-bg,none);
+  background-size:cover;background-position:var(--svc-bg-pos,center);background-repeat:no-repeat;
+  opacity:0;transform:scale(1.04);filter:blur(0px);
+  transition:opacity .6s var(--ease),transform .9s var(--ease),filter .6s var(--ease);z-index:-1}
+.svc:hover::before{opacity:1;transform:scale(1);filter:blur(6px)}
+.svc .n{font-family:"Montenegrin Gothic One",sans-serif;font-weight:600;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.05em;align-self:flex-start;padding-top:8px}
 .svc .body{max-width:760px}
-.svc h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:clamp(26px,3.6vw,46px);letter-spacing:-.02em;line-height:1.02;transition:.4s var(--ease)}
+.svc h3{font-family:"Montenegrin Gothic One",sans-serif;font-weight:600;font-size:clamp(26px,3.6vw,46px);letter-spacing:-.02em;line-height:1.02;transition:.4s var(--ease)}
 .svc:hover h3{color:var(--terra);transform:translateX(8px)}
 .svc p{color:var(--ink-soft);font-size:15.5px;line-height:1.6;max-width:540px;margin-top:14px}
 .svc .tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
@@ -376,11 +382,11 @@ section{position:relative}
 .about-media .frame-tag{position:absolute;left:18px;bottom:18px;z-index:3;background:rgba(10,10,10,.6);backdrop-filter:blur(8px);border:1px solid var(--line);
   padding:9px 14px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;gap:9px}
 .about-media .frame-tag .b{width:8px;height:8px;border-radius:50%;background:var(--terra)}
-.about h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:clamp(28px,3.8vw,52px);letter-spacing:-.02em;line-height:1.04;margin:20px 0 22px}
+.about h2{font-family:"Montenegrin Gothic One",sans-serif;font-weight:600;font-size:clamp(28px,3.8vw,52px);letter-spacing:-.02em;line-height:1.04;margin:20px 0 22px}
 .about h2 .serif{color:var(--terra)}
 .about p{color:var(--ink-soft);font-size:16px;line-height:1.68;margin-bottom:18px;max-width:520px}
 .stats{display:flex;gap:clamp(24px,4vw,52px);margin-top:36px;flex-wrap:wrap}
-.stat .num{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:clamp(34px,4vw,52px);letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.stat .num{font-family:"Montenegrin Gothic One",sans-serif;font-weight:700;font-size:clamp(34px,4vw,52px);letter-spacing:-.03em;line-height:1;color:var(--ink)}
 .stat .num .serif{color:var(--terra)}
 .stat .lbl{color:var(--muted);font-size:13px;margin-top:8px;letter-spacing:.02em}
 @media (max-width:820px){.about-grid{grid-template-columns:1fr;gap:36px}.about-media{max-width:440px}}
@@ -394,7 +400,7 @@ section{position:relative}
   padding:9px 14px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-soft);display:flex;align-items:center;gap:9px}
 .founder-media .frame-tag .b{width:8px;height:8px;border-radius:50%;background:var(--terra)}
 .founder-copy .role{font-size:14px;color:var(--terra);letter-spacing:.06em;font-weight:500;margin-top:8px}
-.founder-copy h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:clamp(32px,4.2vw,56px);letter-spacing:-.02em;line-height:1.04;margin:16px 0 24px}
+.founder-copy h2{font-family:"Montenegrin Gothic One",sans-serif;font-weight:600;font-size:clamp(32px,4.2vw,56px);letter-spacing:-.02em;line-height:1.04;margin:16px 0 24px}
 .founder-copy h2 .serif{color:var(--gold)}
 .founder-copy blockquote{color:var(--ink-soft);font-size:16px;line-height:1.68;max-width:520px;border-left:2px solid var(--terra);padding-left:20px;font-style:italic}
 .founder-grid--reverse{direction:rtl}
@@ -408,7 +414,7 @@ section{position:relative}
 .contact-inner{position:relative;z-index:2;text-align:center;display:flex;flex-direction:column;align-items:center;gap:clamp(26px,4vh,40px)}
 .contact .kick{justify-content:center}
 .contact .kick::before{display:none}
-.contact h2{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;letter-spacing:-.03em;line-height:.96;font-size:clamp(44px,9vw,140px)}
+.contact h2{font-family:"Montenegrin Gothic One",sans-serif;font-weight:700;letter-spacing:-.03em;line-height:.96;font-size:clamp(44px,9vw,140px)}
 .contact h2 .serif{color:var(--terra)}
 .contact .sub{color:var(--ink-soft);font-size:clamp(16px,1.4vw,18px);max-width:540px;line-height:1.6}
 .contact-ctas{display:flex;gap:16px;flex-wrap:wrap;justify-content:center}
@@ -480,8 +486,8 @@ section.contact.in .glow{transform:scale(1);opacity:1}
 .lb{position:fixed;inset:0;z-index:9500;background:rgba(10,10,10,.92);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:5vw}
 .lb.on{display:flex}
 .lb .card{max-width:880px;width:100%;text-align:center}
-.lb .card .frameline{font-family:"Bricolage Grotesque",sans-serif;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;font-size:12px;margin-bottom:20px}
-.lb .card h3{font-family:"Bricolage Grotesque",sans-serif;font-weight:600;font-size:clamp(28px,5vw,54px);letter-spacing:-.02em;line-height:1}
+.lb .card .frameline{font-family:"Montenegrin Gothic One",sans-serif;color:var(--gold);letter-spacing:.2em;text-transform:uppercase;font-size:12px;margin-bottom:20px}
+.lb .card h3{font-family:"Montenegrin Gothic One",sans-serif;font-weight:600;font-size:clamp(28px,5vw,54px);letter-spacing:-.02em;line-height:1}
 .lb .card p{color:var(--ink-soft);margin-top:18px;max-width:520px;margin-inline:auto;line-height:1.6}
 .lb .x{position:absolute;top:26px;right:30px;width:46px;height:46px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;cursor:pointer;color:var(--ink)}
 .lb .x:hover{background:var(--terra);color:#FFFFFF;border-color:var(--terra)}
@@ -596,8 +602,14 @@ footer{background:rgba(255,255,255,.02);backdrop-filter:blur(8px);-webkit-backdr
    ============================================================ */
 .scatter-work{position:relative;width:100%;overflow:hidden;background:#000;padding:64px 0}
 @media (min-width:768px){.scatter-work{padding:96px 0}}
+/* soft minimalist background grid — same recipe as the hero's .ed-grid */
+.scatter-grid{position:absolute;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(to right,rgba(255,255,255,.045) 1px,transparent 1px),linear-gradient(to bottom,rgba(255,255,255,.045) 1px,transparent 1px);
+  background-size:clamp(60px,6vw,90px) clamp(60px,6vw,90px);
+  -webkit-mask-image:radial-gradient(120% 100% at 50% 40%,#000 28%,rgba(0,0,0,.32) 64%,transparent 90%);
+  mask-image:radial-gradient(120% 100% at 50% 40%,#000 28%,rgba(0,0,0,.32) 64%,transparent 90%);}
 /* container: max-w-6xl px-5 sm:px-8 */
-.scatter-wrap{max-width:1152px;margin:0 auto;padding:0 20px}
+.scatter-wrap{position:relative;z-index:1;max-width:1152px;margin:0 auto;padding:0 20px}
 @media (min-width:640px){.scatter-wrap{padding:0 32px}}
 
 /* ── top strip: wordmark + breadcrumb ── */
@@ -605,7 +617,7 @@ footer{background:rgba(255,255,255,.02);backdrop-filter:blur(8px);-webkit-backdr
   font-family:"DM Mono",monospace;font-size:10px;letter-spacing:.28em;text-transform:uppercase;
   color:rgba(255,255,255,.45)}
 @media (min-width:640px){.scatter-topbar{font-size:11px}}
-.scatter-brand{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;font-size:14px;
+.scatter-brand{font-family:"Montenegrin Gothic One",sans-serif;font-weight:700;font-size:14px;
   letter-spacing:-.02em;text-transform:none;color:var(--ink)}
 .scatter-reg{vertical-align:super;font-size:9px;color:var(--terra);margin-left:1px}
 .scatter-loc{display:none}
@@ -627,8 +639,8 @@ footer{background:rgba(255,255,255,.02);backdrop-filter:blur(8px);-webkit-backdr
 /* ── the scattered pile ──
    mobile: 2-column masonry collage; md+: absolute scatter in a fixed-ratio stage */
 .scatter-stage{position:relative;z-index:20;margin-top:32px;column-count:2;column-gap:12px}
-@media (min-width:768px){.scatter-stage{column-count:1;column-gap:0;aspect-ratio:4/3}}
-@media (min-width:1024px){.scatter-stage{aspect-ratio:16/10}}
+@media (min-width:768px){.scatter-stage{column-count:1;column-gap:0;aspect-ratio:5/4}}
+@media (min-width:1024px){.scatter-stage{aspect-ratio:16/13}}
 
 .scatter-card{position:relative;z-index:var(--z);margin-bottom:12px;break-inside:avoid}
 .scatter-card:hover{z-index:50}
@@ -636,13 +648,31 @@ footer{background:rgba(255,255,255,.02);backdrop-filter:blur(8px);-webkit-backdr
   .scatter-card{position:absolute;left:var(--l);top:var(--t);width:var(--w);margin-bottom:0}
 }
 
+/* very shallow hover glow — a real layer sitting between the background
+   grid (z-index:0) and the card pile (z-index:10-45), NOT a pseudo-element
+   scoped inside the card's own stacking context. Each glow is a sibling
+   div positioned with the same --l/--t/--w as its card, immediately
+   after it in the DOM so `:hover +` can target it without JS. */
+.scatter-glow{display:none;pointer-events:none;z-index:1;border-radius:22px;
+  background:radial-gradient(60% 60% at 50% 50%,rgba(244,48,104,.95),rgba(225,29,72,.7) 42%,rgba(139,92,246,.42) 66%,transparent 88%);
+  filter:blur(28px);opacity:0;transform:scale(.9);
+  transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1)}
+@media (min-width:768px){
+  .scatter-glow{display:block;position:absolute;left:var(--l);top:var(--t);width:var(--w);aspect-ratio:var(--aspect,16/9)}
+}
+.scatter-card:hover + .scatter-glow,.scatter-card:focus-within + .scatter-glow{opacity:1;transform:scale(1.65)}
+@media (prefers-reduced-motion:reduce){.scatter-glow{transition:opacity .3s}}
+
 /* card button — resting tilt, un-rotate + lift on hover (rotation lives
    here on the inner element so it never composes with the wrapper's
    entrance transform) */
 .scatter-btn{display:block;width:100%;padding:0;border:0;text-align:left;cursor:pointer;color:inherit;
   background:#111111;border-radius:12px;overflow:hidden;
-  box-shadow:0 30px 60px -12px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.1);
-  transform:rotate(var(--rot));transition:transform .5s cubic-bezier(0,0,.2,1);
+  /* higher --z (foreground cards) sit with a bigger, softer shadow; cards
+     further back in the pile hug the surface with a tighter one */
+  box-shadow:0 calc(14px + var(--z) * .55px) calc(30px + var(--z) * 1.1px) -12px rgba(0,0,0,.9),0 0 0 1px rgba(255,255,255,.1);
+  transform:translate3d(var(--px,0px),var(--py,0px),0) rotate(var(--rot));
+  transition:transform .5s cubic-bezier(0,0,.2,1),box-shadow .5s cubic-bezier(0,0,.2,1);
   -webkit-tap-highlight-color:transparent}
 .scatter-btn:hover,.scatter-btn:focus-visible{transform:rotate(0deg) scale(1.03)}
 .scatter-btn:focus-visible{outline:2px solid var(--terra);outline-offset:2px}
@@ -696,7 +726,7 @@ footer{background:rgba(255,255,255,.02);backdrop-filter:blur(8px);-webkit-backdr
 @media (min-width:768px){.scatter-headline{margin-top:-6%}}
 .scatter-h2{overflow:hidden;line-height:.9;text-align:center}
 .scatter-h2-inner{display:block;white-space:nowrap}
-.scatter-h2-word{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;letter-spacing:-.04em;
+.scatter-h2-word{font-family:"Montenegrin Gothic One",sans-serif;font-weight:700;letter-spacing:-.04em;
   color:var(--ink);font-size:clamp(3.4rem,12.5vw,11.5rem)}
 .scatter-h2-idx{margin-left:8px;display:inline-block;transform:translateY(-1.5em);
   font-family:"DM Mono",monospace;font-weight:400;letter-spacing:.1em;color:var(--terra);
@@ -718,9 +748,28 @@ footer{background:rgba(255,255,255,.02);backdrop-filter:blur(8px);-webkit-backdr
 .scatter-card.in{opacity:1;transform:none;transition:opacity 1s cubic-bezier(.165,.84,.44,1),transform 1s cubic-bezier(.165,.84,.44,1)}
 .scatter-h2-inner.in{transform:none;transition:transform 1s cubic-bezier(.165,.84,.44,1)}
 .scatter-hint.in{opacity:1;transform:none;transition:opacity .6s cubic-bezier(.165,.84,.44,1),transform .6s cubic-bezier(.165,.84,.44,1)}
+
+/* ── idle float — once a card has settled in, it drifts on a slow, gentle
+   loop; animation-delay lets the entrance transition finish untouched
+   before the loop takes over the same `transform` property. Each card
+   gets its own duration/delay/amplitude so the pile never bobs in sync. ── */
+@keyframes scatterFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(var(--float-y,-9px))}}
+.scatter-card.in{animation:scatterFloat 7s ease-in-out infinite;animation-delay:1.2s}
+.scatter-card:nth-child(1).in{--float-y:-8px;animation-duration:6.8s;animation-delay:1.0s}
+.scatter-card:nth-child(2).in{--float-y:-11px;animation-duration:7.6s;animation-delay:1.3s}
+.scatter-card:nth-child(3).in{--float-y:-7px;animation-duration:6.2s;animation-delay:.9s}
+.scatter-card:nth-child(4).in{--float-y:-12px;animation-duration:8.0s;animation-delay:1.6s}
+.scatter-card:nth-child(5).in{--float-y:-9px;animation-duration:7.0s;animation-delay:1.1s}
+.scatter-card:nth-child(6).in{--float-y:-6px;animation-duration:6.5s;animation-delay:1.4s}
+.scatter-card:nth-child(7).in{--float-y:-10px;animation-duration:7.8s;animation-delay:1.0s}
+.scatter-card:nth-child(8).in{--float-y:-8px;animation-duration:6.9s;animation-delay:1.5s}
+.scatter-card:nth-child(9).in{--float-y:-13px;animation-duration:7.4s;animation-delay:1.2s}
+.scatter-card:nth-child(10).in{--float-y:-7px;animation-duration:6.3s;animation-delay:1.3s}
+
 @media (prefers-reduced-motion:reduce){
   .scatter-topbar,.scatter-card,.scatter-h2-inner,.scatter-hint{opacity:1;transform:none}
   .scatter-pill{opacity:1;transform:rotate(2deg)}
+  .scatter-card.in{animation:none}
   .scatter-dot{animation:none}
 }
 
@@ -775,7 +824,7 @@ footer{background:rgba(255,255,255,.02);backdrop-filter:blur(8px);-webkit-backdr
 
 .gcar-headline{position:relative;z-index:2;margin-top:clamp(36px,6vh,56px)}
 .gcar-h2{line-height:.9;text-align:center}
-.gcar-word{font-family:"Bricolage Grotesque",sans-serif;font-weight:700;letter-spacing:-.04em;
+.gcar-word{font-family:"Montenegrin Gothic One",sans-serif;font-weight:700;letter-spacing:-.04em;
   color:var(--ink);font-size:clamp(54px,12vw,160px)}
 .gcar-idx{margin-left:10px;display:inline-block;vertical-align:super;font-family:"DM Mono",monospace;
   font-weight:400;letter-spacing:.06em;color:var(--terra);font-size:clamp(13px,1.7vw,22px)}
@@ -786,3 +835,22 @@ footer{background:rgba(255,255,255,.02);backdrop-filter:blur(8px);-webkit-backdr
   .gcar-card{filter:none;transform:none}
   .gcar-dot{animation:none}
 }
+
+/* ============================================================
+   IMPACT — three-pillar value section (Testimonials -> Contact)
+   ============================================================ */
+.impact{padding:clamp(80px,12vh,150px) 0}
+.impact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,3vw,32px)}
+.impact-card{padding:clamp(28px,3vw,36px) clamp(24px,2.6vw,30px);border:1px solid var(--line-2);
+  border-radius:20px;background:rgba(255,255,255,.02);transition:border-color .45s var(--ease),transform .5s var(--ease),box-shadow .5s var(--ease)}
+.impact-card:hover{border-color:rgba(225,29,72,.35);transform:translateY(-6px);
+  box-shadow:0 30px 70px rgba(0,0,0,.4),0 0 36px rgba(225,29,72,.12)}
+.impact-num{font-family:"Montenegrin Gothic One",sans-serif;font-weight:600;font-size:13px;color:var(--muted);
+  font-variant-numeric:tabular-nums;letter-spacing:.05em;margin-bottom:18px}
+.impact-word{font-family:"Montenegrin Gothic One",sans-serif;font-weight:700;font-size:clamp(26px,2.6vw,34px);
+  letter-spacing:-.02em;color:var(--ink);margin-bottom:14px}
+.impact-card p{color:var(--ink-soft);font-size:15px;line-height:1.65}
+.impact-card p em{color:var(--sand);font-style:italic;font-family:"Instrument Serif",serif;font-size:1.05em}
+.impact-close{margin-top:clamp(40px,6vh,60px);text-align:center;font-family:"Instrument Serif",serif;
+  font-style:italic;font-size:clamp(18px,2vw,24px);color:var(--ink-soft);max-width:640px;margin-inline:auto}
+@media (max-width:820px){.impact-grid{grid-template-columns:1fr;max-width:520px;margin:0 auto}}
