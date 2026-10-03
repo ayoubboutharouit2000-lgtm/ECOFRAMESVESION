@@ -70,7 +70,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,500&family=Bebas+Neue&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/styles.css?v=20261003-4" />
+<link rel="stylesheet" href="css/styles.css?v=20261003-8" />
 <link rel="stylesheet" href="js/hero-cards/hero-cards.css?v=20261003-5" />
 </head>
 <body>
@@ -135,7 +135,7 @@
       <a href="#contact">Contact</a>
     </nav>
     <div class="nav-tools">
-      <a class="btn solid" href="#contact"><span class="dot"></span><span class="lbl">Start a project</span></a>
+      <a class="btn leak" href="#contact"><span class="lbl">Start a project</span></a>
       <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><span></span><span></span></button>
     </div>
   </div>
@@ -166,7 +166,7 @@
       <div class="passion-copy">
         <h2 class="passion-title" data-reveal>Made by people who love the craft</h2>
         <p class="passion-text" data-reveal data-d="1">
-          EcoFrames began as two co-founders who couldn't stay away from a camera. Years later the obsession hasn't faded — <span class="serif">the early call times, the chase for the right light,</span> the quiet thrill of a shot that lands. That love for the field is in <span class="serif">every frame we deliver.</span>
+          EcoFrames began as two co-founders <span class="ink-tile" style="--tilt:-3deg" data-fly-to="bts-freefire" aria-hidden="true"><video data-tile src="assets/videos/tiles/crew.mp4" poster="assets/videos/tiles/crew.jpg" muted loop playsinline preload="none"></video></span> who couldn't stay away from a camera. Years later the obsession hasn't faded — <span class="serif">the early call times, <span class="ink-tile" style="--tilt:2.5deg" data-fly-to="real-estate" aria-hidden="true"><video data-tile src="assets/videos/tiles/dawn.mp4" poster="assets/videos/tiles/dawn.jpg" muted loop playsinline preload="none"></video></span> the chase for the right light, <span class="ink-tile" style="--tilt:-2deg" data-fly-to="car-sticker" aria-hidden="true"><video data-tile src="assets/videos/tiles/light.mp4" poster="assets/videos/tiles/light.jpg" muted loop playsinline preload="none"></video></span></span> the quiet thrill of a shot that lands. <span class="ink-tile" style="--tilt:3deg" data-fly-to="prague-folklore" aria-hidden="true"><video data-tile src="assets/videos/tiles/dance.mp4" poster="assets/videos/tiles/dance.jpg" muted loop playsinline preload="none"></video></span> That love for the field is in <span class="serif">every frame we deliver. <span class="ink-tile" style="--tilt:-2.5deg" data-fly-to="wedding-best-of" aria-hidden="true"><video data-tile src="assets/videos/tiles/deliver.mp4" poster="assets/videos/tiles/deliver.jpg" muted loop playsinline preload="none"></video></span></span>
         </p>
       </div>
     </div>
@@ -591,21 +591,15 @@
         </div>
         <p class="brief-alt">Prefer email? <a href="mailto:contact@ecoframesvision.com">contact@ecoframesvision.com</a></p>
       </form>
-      <div class="contact-detail" data-reveal data-d="3">
-        <span>Based in <a href="#">Marrakech, Morocco</a></span>
-        <span>Available worldwide</span>
-        <span><a href="#">Instagram</a> · <a href="#">TikTok</a></span>
-      </div>
     </div>
   </div>
 
   <footer>
+    <!-- one slim line: the logo, menu and contact routes are all already on screen above it -->
     <div class="wrap foot">
-      <a class="brand" href="#top" aria-label="EcoFrames Vision — back to top"><svg class="brand-logo" viewBox="0 0 1383 133" aria-hidden="true" focusable="false"><use href="#ef-logo"/></svg></a>
-      <div class="foot-links">
-        <a href="#work">Work</a><a href="#services">Services</a><a href="#about">Studio</a><a href="#contact">Contact</a>
-      </div>
-      <div class="copy">© 2026 EcoFrames Vision — Marrakech</div>
+      <div class="copy">© 2026 EcoFrames Vision · Marrakech, available worldwide</div>
+      <div class="foot-links"><a href="#">Instagram</a><a href="#">TikTok</a></div>
+      <a class="foot-top" href="#top">Back to top <span aria-hidden="true">↑</span></a>
     </div>
   </footer>
 </section>
@@ -625,7 +619,8 @@
 <!-- ===== HERO CARDS ===== -->
 <script type="module" src="js/hero-cards/hero-cards.js?v=20261003-5"></script>
 
-<script src="js/script.js?v=20261003-1" defer></script>
+<script src="js/script.js?v=20261003-2" defer></script>
+<script src="js/tile-flight.js?v=20261003-4" defer></script>
 <script src="js/founders-split.js?v=20261003-1" defer></script>
 <script src="js/gallery-bts.js?v=20261002-1" defer></script>
 </body>

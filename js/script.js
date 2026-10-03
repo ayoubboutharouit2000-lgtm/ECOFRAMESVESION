@@ -139,6 +139,16 @@ document.querySelectorAll('.piece.video').forEach(piece=>{
   });
 });
 
+// passion-text footage tiles: play only while on screen (posters stand in under reduced motion)
+(function(){
+  const tiles=[...document.querySelectorAll('video[data-tile]')];
+  if(!tiles.length||matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+  const io=new IntersectionObserver(entries=>entries.forEach(({target:v,isIntersecting})=>{
+    if(isIntersecting){v.preload='auto';v.play().catch(()=>{})}else v.pause();
+  }),{rootMargin:'200px 0px'});
+  tiles.forEach(v=>io.observe(v));
+})();
+
 // === SCROLL MOTION ENGINE ===
 // Parallax elements
 document.querySelectorAll('.about-media').forEach(el=>el.setAttribute('data-parallax','0.15'));

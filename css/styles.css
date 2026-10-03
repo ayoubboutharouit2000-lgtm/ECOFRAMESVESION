@@ -108,7 +108,6 @@ header.nav.scrolled{
 /* new wordmark (inline SVG, inherits text colour) */
 .brand-logo{display:block;height:22px;width:auto;aspect-ratio:1383 / 133;color:var(--ink);transition:opacity .3s var(--ease)}
 .brand:hover .brand-logo{opacity:.8}
-.foot .brand-logo{height:18px}
 @media (max-width:640px){.brand-logo{height:17px}}
 .brand span{color:var(--muted);font-weight:500}
 nav.links{display:flex;align-items:center;gap:38px}
@@ -305,6 +304,19 @@ section{position:relative}
 .passion-text{font-family:var(--font-display);font-weight:400;letter-spacing:var(--display-track);line-height:1.12;
   font-size:clamp(22px,2.3vw,36px);color:var(--ink);max-width:30ch;margin:0 auto}
 .passion-text .serif{color:var(--accent-ink)}
+/* inline footage tiles: tiny looping clips set into the sentence like words (played/paused by script.js) */
+.passion-text{line-height:1.22}
+.ink-tile{display:inline-block;width:1.1em;height:1.1em;vertical-align:-.22em;margin:0 .06em;
+  border-radius:.28em;overflow:hidden;background:var(--dark);
+  box-shadow:0 .06em .18em rgba(38,40,32,.28),inset 0 0 0 1px rgba(255,255,255,.08);
+  transform:rotate(var(--tilt,0deg));transition:transform .5s var(--ease)}
+.ink-tile:hover{transform:rotate(0) scale(1.18)}
+.ink-tile video{display:block;width:100%;height:100%;object-fit:cover;background:none}
+/* the tiles in flight to their Showcase cards (js/tile-flight.js) — above the section sheets, below the nav */
+.fly-layer{position:fixed;inset:0;z-index:60;pointer-events:none;overflow:hidden}
+.fly-tile{position:absolute;left:0;top:0;display:none;overflow:hidden;background:var(--dark);
+  box-shadow:0 18px 40px -10px rgba(0,0,0,.45);will-change:transform}
+.fly-tile video{display:block;width:100%;height:100%;object-fit:cover;background:none}
 /* the right-hand figure is the same cut-out, mirrored */
 .pop--right .pop-cut{scale:-1 1}
 @media (max-width:820px){
@@ -486,12 +498,16 @@ section{position:relative}
 }
 
 /* ---------- footer ---------- */
-footer{border-top:1px solid var(--line);margin-top:var(--sec-pad);padding:46px 0 38px}
+footer{border-top:1px solid var(--line);margin-top:var(--sec-pad);padding:26px 0 24px}
 .foot{display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
-.foot .brand b{font-size:15px}
 .foot-links{display:flex;gap:26px;font-size:13.5px;color:var(--ink-soft)}
 .foot-links a:hover{color:var(--accent-ink)}
 .foot .copy{color:var(--muted);font-size:12.5px;letter-spacing:.03em}
+.foot-top{display:inline-flex;align-items:center;gap:7px;font-size:13px;color:var(--ink-soft)}
+.foot-top span{display:inline-block;transition:transform .35s var(--ease)}
+.foot-top:hover{color:var(--accent-ink)}
+.foot-top:hover span{transform:translateY(-3px)}
+@media (max-width:640px){.foot{flex-direction:column;justify-content:center;text-align:center;gap:14px}}
 
 /* ---------- scroll motion ---------- */
 [data-reveal]{opacity:0;transform:translateY(32px)}
@@ -563,6 +579,19 @@ header.nav.scrolled{
 .btn.solid{background:linear-gradient(135deg,var(--terra),var(--terra-2));border-color:transparent;
   box-shadow:0 8px 30px rgba(139,154,110,.45),inset 0 1px 0 rgba(255,255,255,.28)}
 .btn.solid:hover{box-shadow:0 12px 40px rgba(139,154,110,.6),inset 0 1px 0 rgba(255,255,255,.3)}
+/* nav CTA — dark pill; on hover a warm light leak, like on old film stock, drifts across it */
+.btn.leak{position:relative;overflow:hidden;isolation:isolate;background:var(--dark);border-color:var(--dark);color:var(--bg);
+  backdrop-filter:none;-webkit-backdrop-filter:none;box-shadow:0 10px 28px -10px rgba(35,37,29,.5),inset 0 1px 0 rgba(255,255,255,.08)}
+.btn.leak:hover{background:var(--dark);border-color:var(--dark);color:var(--bg);box-shadow:0 14px 34px -10px rgba(35,37,29,.6),inset 0 1px 0 rgba(255,255,255,.1)}
+.btn.leak .lbl{position:relative;z-index:2}
+.btn.leak::after{content:"";position:absolute;inset:-60% -40%;z-index:1;pointer-events:none;mix-blend-mode:screen;opacity:0;
+  background:radial-gradient(40% 55% at 30% 50%,rgba(255,140,40,.95),transparent 70%),
+             radial-gradient(30% 45% at 55% 40%,rgba(255,60,40,.75),transparent 70%),
+             radial-gradient(35% 50% at 75% 60%,rgba(255,210,120,.85),transparent 70%);
+  filter:blur(6px);transform:translateX(-70%)}
+.btn.leak:is(:hover,:focus-visible)::after{animation:leak 2.4s ease-in-out infinite}
+@keyframes leak{0%{transform:translateX(-70%);opacity:0}25%{opacity:1}75%{opacity:.9}100%{transform:translateX(70%);opacity:0}}
+@media (prefers-reduced-motion:reduce){.btn.leak:is(:hover,:focus-visible)::after{animation:none;opacity:.55;transform:none}}
 
 /* work pieces — glass depth + glow on hover */
 .piece{box-shadow:0 14px 44px rgba(38,40,32,.18),inset 0 0 0 1px rgba(255,255,255,.04)}
