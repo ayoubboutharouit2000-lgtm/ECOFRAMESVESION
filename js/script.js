@@ -5,6 +5,56 @@ if(typeof window.scrollY!=='number'){try{Object.defineProperty(window,'scrollY',
 const nav=document.getElementById('nav');
 addEventListener('scroll',()=>{nav.classList.toggle('scrolled',scrollY>40)},{passive:true});
 
+// curtain: while the statement covers the pinned hero, the hero drifts up and recedes slightly
+const curtainHero=document.querySelector('.curtain>.hero-cards');
+if(curtainHero&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+  let ticking=false;
+  const pops=[...document.querySelectorAll('.curtain .pop')];
+  const clamp01=v=>Math.min(Math.max(v,0),1);
+  const drift=()=>{
+    ticking=false;
+    const p=clamp01(scrollY/innerHeight);
+    curtainHero.style.transform=p?`translate3d(0,${-p*6}vh,0) scale(${1-p*.05})`:'';
+    // the people climb out of their photos once scrolling starts, staggered left then right
+    pops.forEach((el,i)=>{
+      const t=clamp01((p-.06-i*.08)/.45);
+      el.style.setProperty('--rise',(1-Math.pow(1-t,3)).toFixed(4));
+    });
+  };
+  addEventListener('scroll',()=>{if(!ticking){ticking=true;requestAnimationFrame(drift)}},{passive:true});
+  drift();
+}
+
+// section transitions: as the next sheet slides over a section, its content recedes (--cover 0 -> 1, styled in CSS)
+const receders=[...document.querySelectorAll('[data-recede]')];
+if(receders.length&&!matchMedia('(prefers-reduced-motion:reduce)').matches){
+  let queued=false;
+  const recede=()=>{
+    queued=false;
+    const vh=innerHeight;
+    receders.forEach(el=>{
+      const b=el.getBoundingClientRect().bottom;
+      const q=Math.min(Math.max((vh-b)/vh,0),1);
+      if(q!==el._cover){el._cover=q;el.style.setProperty('--cover',q.toFixed(4))}
+    });
+  };
+  addEventListener('scroll',()=>{if(!queued){queued=true;requestAnimationFrame(recede)}},{passive:true});
+  addEventListener('resize',recede);
+  recede();
+}
+
+// mobile menu: toggle the links sheet; close it on link tap or Escape
+const menuBtn=nav.querySelector('.menu-toggle');
+function setMenu(open){
+  nav.classList.toggle('menu-open',open);
+  menuBtn.setAttribute('aria-expanded',open);
+  menuBtn.setAttribute('aria-label',open?'Close menu':'Open menu');
+  if(open)nav.classList.add('scrolled');else nav.classList.toggle('scrolled',scrollY>40);
+}
+menuBtn.addEventListener('click',()=>setMenu(!nav.classList.contains('menu-open')));
+nav.querySelectorAll('nav.links a').forEach(a=>a.addEventListener('click',()=>setMenu(false)));
+addEventListener('keydown',e=>{if(e.key==='Escape')setMenu(false)});
+
 // reveal — JS rAF tween (works even when CSS animation/transition timeline is throttled)
 const reveals=[...document.querySelectorAll('[data-reveal]')];
 const prefersReduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
@@ -32,8 +82,10 @@ function checkReveal(){
     if(r.top<vh*0.9 && r.bottom>0){animateIn(el);reveals.splice(i,1);}
   }
 }
-addEventListener('scroll',checkReveal,{passive:true});
-addEventListener('resize',checkReveal);
+let revealQueued=false;
+const queueReveal=()=>{if(!revealQueued){revealQueued=true;requestAnimationFrame(()=>{revealQueued=false;checkReveal()})}};
+addEventListener('scroll',queueReveal,{passive:true});
+addEventListener('resize',queueReveal);
 checkReveal();
 // failsafe: force-reveal anything still hidden after 2.6s
 setTimeout(()=>{document.querySelectorAll('[data-reveal]').forEach(el=>{if(!el._rev){el._rev=true;el.style.transition='none';el.style.opacity='1';el.style.transform='none';}});},2600);
@@ -87,22 +139,6 @@ document.querySelectorAll('.piece.video').forEach(piece=>{
   });
 });
 
-// showreel player (hero play button)
-const reelEl=document.getElementById('reel'),reelVideo=document.getElementById('reelVideo'),
-      reelX=document.getElementById('reelX'),reelStage=document.getElementById('reelStage');
-function openReel(){
-  reelEl.classList.add('on');
-  reelStage.classList.remove('pop');void reelStage.offsetWidth;reelStage.classList.add('pop');
-  reelVideo.currentTime=0;
-  reelVideo.play().catch(()=>{});
-}
-function closeReel(){reelEl.classList.remove('on');reelVideo.pause();}
-const playReelBtn=document.getElementById('playReel');
-if(playReelBtn)playReelBtn.addEventListener('click',openReel);
-reelX.addEventListener('click',closeReel);
-reelEl.addEventListener('click',e=>{if(e.target===reelEl)closeReel();});
-addEventListener('keydown',e=>{if(e.key==='Escape')closeReel();});
-
 // === SCROLL MOTION ENGINE ===
 // Parallax elements
 document.querySelectorAll('.about-media').forEach(el=>el.setAttribute('data-parallax','0.15'));
@@ -115,7 +151,6 @@ const motionEls=[
   ...document.querySelectorAll('.stat'),
   ...document.querySelectorAll('.photo-grid .ph-item'),
   ...document.querySelectorAll('.founder-grid'),
-  ...document.querySelectorAll('.marquee'),
   ...document.querySelectorAll('section.contact'),
   ...document.querySelectorAll('.sec-title'),
   ...document.querySelectorAll('.about')
@@ -156,40 +191,30 @@ function checkMotion(){
   });
   // Counter animation for stats in view
   document.querySelectorAll('.stat.in').forEach(animateCounter);
-  // Parallax
-  document.querySelectorAll('[data-parallax]').forEach(el=>{
-    const r=el.getBoundingClientRect();
-    const speed=parseFloat(el.dataset.parallax)||0.2;
-    const offset=(r.top-vh/2)*speed;
-    el.style.transform=`translateY(${offset.toFixed(1)}px)`;
-  });
+  // Parallax — written to `translate`, not `transform`, so it never fights the reveal tween
+  // (or CSS transforms like the contact glow's scale) on the same element. Read all, then write.
+  const offsets=parallaxEls.map(el=>(el.getBoundingClientRect().top-vh/2)*(parseFloat(el.dataset.parallax)||0.2));
+  parallaxEls.forEach((el,i)=>{el.style.translate=`0 ${offsets[i].toFixed(1)}px`});
 }
-addEventListener('scroll',checkMotion,{passive:true});
-addEventListener('resize',checkMotion);
+const parallaxEls=[...document.querySelectorAll('[data-parallax]')];
+let motionQueued=false;
+const queueMotion=()=>{if(!motionQueued){motionQueued=true;requestAnimationFrame(()=>{motionQueued=false;checkMotion()})}};
+addEventListener('scroll',queueMotion,{passive:true});
+addEventListener('resize',queueMotion);
 checkMotion();
 setTimeout(checkMotion,100);
 
-// === EDITORIAL HERO — mouse parallax + scroll motion ===
+// === EDITORIAL HERO — ambient background-gradient parallax ===
 (function(){
-  const big=document.querySelector('.ed-bigtype');
   const grad=document.querySelector('.ed-grad');
-  const playEl=document.querySelector('.ed-play');
-  if(!big)return;
+  if(!grad)return;
   const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
   let mx=0,my=0,tmx=0,tmy=0,sy=0;
   addEventListener('mousemove',e=>{mx=e.clientX/innerWidth-0.5;my=e.clientY/innerHeight-0.5;},{passive:true});
   addEventListener('scroll',()=>{sy=scrollY;},{passive:true});
-  const t0=performance.now();
-  function frame(now){
+  function frame(){
     tmx+=(mx-tmx)*0.06; tmy+=(my-tmy)*0.06;
-    const t=(now-t0)/1000;
-    const floatY=reduce?0:Math.sin(t*0.8)*9;
-    const px=reduce?0:tmx*70, py=reduce?0:tmy*44;
-    const par=Math.min(sy,900)*0.28;          // scroll parallax (drifts down)
-    big.style.transform=`translate(calc(-50% + ${px.toFixed(1)}px), calc(-54% + ${(py+floatY+par).toFixed(1)}px))`;
-    // opacity is owned by the particle-disintegration loop below
-    if(grad)grad.style.transform=`translate(${(-tmx*26).toFixed(1)}px, ${(-tmy*18 - sy*0.12).toFixed(1)}px)`;
-    if(playEl)playEl.style.transform=`translate(${(tmx*-30).toFixed(1)}px, ${(tmy*-22).toFixed(1)}px)`;
+    if(!reduce) grad.style.transform=`translate(${(-tmx*26).toFixed(1)}px, ${(-tmy*18 - sy*0.12).toFixed(1)}px)`;
     requestAnimationFrame(frame);
   }
   requestAnimationFrame(frame);
@@ -214,6 +239,8 @@ setTimeout(checkMotion,100);
     const t0=performance.now()+i*220;
     function loop(now){
       const r=s.getBoundingClientRect();
+      // off-screen: skip the write so the blurred glass tile isn't repainted every frame
+      if(shown>=1 && (r.bottom<0 || r.top>innerHeight)){requestAnimationFrame(loop);return;}
       if(r.top<innerHeight*0.92) shown=Math.min(1,shown+0.05);
       trx+=(rx-trx)*0.12; tryv+=(ry-tryv)*0.12; hov+=(thov-hov)*0.1;
       const t=(now-t0)/1000;
@@ -262,114 +289,6 @@ setTimeout(checkMotion,100);
     })();
   }
   setTimeout(type,800); // begin after the overline fade-in
-})();
-
-// === FRAME — scroll-triggered particle disintegration ===
-(function(){
-  const hero=document.getElementById('top');
-  const bigtype=document.querySelector('.ed-bigtype');
-  const canvas=document.getElementById('frameParticles');
-  if(!hero||!bigtype||!canvas) return;
-  const ctx=canvas.getContext('2d');
-  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
-  const STOPS=[[0,'#E11D48'],[0.22,'#f43068'],[0.46,'#8B5CF6'],[0.62,'#c4b5fd'],[0.86,'#E11D48'],[1,'#f43068']];
-  let dpr=Math.min(2,window.devicePixelRatio||1);
-  let W=0,H=0,particles=[],rawP=0,built=false;
-
-  function easeInOut(p){return p<0.5?2*p*p:1-Math.pow(-2*p+2,2)/2;}
-
-  function build(){
-    W=hero.clientWidth; H=hero.clientHeight;
-    if(!W||!H) return;
-    canvas.width=Math.round(W*dpr); canvas.height=Math.round(H*dpr);
-    canvas.style.width=W+'px'; canvas.style.height=H+'px';
-    ctx.setTransform(dpr,0,0,dpr,0,0);
-    const rect=bigtype.getBoundingClientRect();
-    const hRect=hero.getBoundingClientRect();
-    const x0=rect.left-hRect.left;
-    const cy=rect.top-hRect.top+rect.height/2;
-    const cs=getComputedStyle(bigtype);
-    const fontPx=parseFloat(cs.fontSize)||300;
-    const oc=document.createElement('canvas');
-    oc.width=W; oc.height=H;
-    const octx=oc.getContext('2d');
-    octx.font=`800 ${fontPx}px "Bricolage Grotesque", sans-serif`;
-    octx.textAlign='left'; octx.textBaseline='middle';
-    try{ if('letterSpacing' in octx) octx.letterSpacing=cs.letterSpacing; }catch(e){}
-    const tw=octx.measureText('FRAME').width;
-    const grad=octx.createLinearGradient(x0,0,x0+tw,0);
-    STOPS.forEach(s=>grad.addColorStop(s[0],s[1]));
-    octx.fillStyle=grad;
-    octx.fillText('FRAME',x0,cy);
-    const img=octx.getImageData(0,0,W,H).data;
-    const diag=Math.hypot(W,H);
-    const step=Math.max(4,Math.round(fontPx/60));
-    const base=step*0.64;
-    const list=[];
-    for(let y=0;y<H;y+=step){
-      for(let x=0;x<W;x+=step){
-        const idx=(y*W+x)*4;
-        const a=img[idx+3];
-        if(a<40) continue;
-        const ang=Math.random()*Math.PI*2;
-        list.push({
-          hx:x+(Math.random()-0.5)*step,
-          hy:y+(Math.random()-0.5)*step,
-          col:`rgb(${img[idx]},${img[idx+1]},${img[idx+2]})`,
-          baseA:Math.min(1,a/255)*(0.78+Math.random()*0.22),
-          ang,
-          dist:diag*(0.12+Math.random()*Math.random()*0.62),
-          z:-0.6+Math.random()*2.0,
-          size:base*(0.7+Math.random()*0.8),
-          df:0.5+Math.random()*1.4,
-          dp:Math.random()*Math.PI*2,
-          da:reduce?0:(3+Math.random()*7)
-        });
-      }
-    }
-    particles=list;
-    built=true;
-  }
-
-  function onScroll(){
-    const h=hero.offsetHeight||1;
-    rawP=Math.max(0,Math.min(1,window.scrollY/(h*0.62)));
-  }
-
-  function frame(now){
-    const t=now/1000;
-    const raw=rawP;
-    const pe=easeInOut(raw);
-    bigtype.style.opacity=Math.max(0,Math.min(1,1-raw/0.42)).toFixed(3);
-    const layerA=Math.max(0,Math.min(1,raw/0.04));
-    ctx.clearRect(0,0,W,H);
-    if(built && layerA>0){
-      for(let i=0;i<particles.length;i++){
-        const p=particles[i];
-        const spread=p.dist*pe;
-        const dx=Math.cos(p.ang)*spread + Math.sin(t*p.df+p.dp)*p.da*(0.5+pe);
-        const dy=Math.sin(p.ang)*spread + Math.cos(t*p.df*0.9+p.dp)*p.da*(0.5+pe);
-        const scale=Math.max(0.18,1+p.z*pe);
-        const a=p.baseA*(1-0.62*pe)*layerA;
-        if(a<0.012) continue;
-        const s=p.size*scale;
-        ctx.globalAlpha=a;
-        ctx.fillStyle=p.col;
-        ctx.fillRect(p.hx+dx-s*0.5, p.hy+dy-s*0.5, s, s);
-      }
-      ctx.globalAlpha=1;
-    }
-    requestAnimationFrame(frame);
-  }
-
-  let rt;
-  function rebuild(){ clearTimeout(rt); rt=setTimeout(()=>{ dpr=Math.min(2,window.devicePixelRatio||1); build(); },180); }
-
-  addEventListener('scroll',onScroll,{passive:true});
-  addEventListener('resize',rebuild);
-  (document.fonts&&document.fonts.ready?document.fonts.ready:Promise.resolve()).then(()=>{
-    build(); onScroll(); requestAnimationFrame(frame);
-  });
 })();
 
 // === SCATTERED WORK SHOWCASE — reveal choreography + video modal ===
@@ -491,4 +410,55 @@ setTimeout(checkMotion,100);
   }
   prevBtn&&prevBtn.addEventListener('click',()=>scrollByCard(-1));
   nextBtn&&nextBtn.addEventListener('click',()=>scrollByCard(1));
+})();
+
+// contact picker: the chosen answers become a one-line brief that prefills the Calendly booking
+// (as the first custom question, a1) and the WhatsApp message. Calendly only loads on "Book".
+(function(){
+  const form=document.getElementById('brief');
+  if(!form)return;
+  const summary=document.getElementById('briefSummary');
+  const waLink=document.getElementById('briefWa');
+  const bookBtn=document.getElementById('briefBook');
+  const WA='https://wa.me/212600276312';
+  const CAL='https://calendly.com/contact-ecoframesvision/30min?hide_gdpr_banner=1&background_color=f7f2eb&text_color=262820&primary_color=5d6a45';
+  const pick=name=>form.querySelector(`input[name="${name}"]:checked`);
+
+  function brief(){
+    const [what,when,where]=['what','when','where'].map(pick);
+    const labels=[what,when,where].filter(Boolean).map(i=>i.value);
+    const sentence=`I'm planning ${what?what.dataset.say:'a project'}`+
+      (when?` ${when.dataset.say}`:'')+(where?`, ${where.dataset.say}`:'')+'.';
+    return {labels,sentence};
+  }
+  function update(){
+    const {labels,sentence}=brief();
+    summary.textContent=labels.length?labels.join(' · '):'Pick what fits — or skip straight to a call.';
+    waLink.href=`${WA}?text=${encodeURIComponent(`Hi EcoFrames! ${sentence} Could we talk about it?`)}`;
+  }
+  form.addEventListener('change',update);
+  update();
+
+  // load Calendly's popup widget once, the first time someone shows intent to book
+  let calendly;
+  function loadCalendly(){
+    if(calendly)return calendly;
+    const css=document.createElement('link');
+    css.rel='stylesheet';css.href='https://assets.calendly.com/assets/external/widget.css';
+    document.head.appendChild(css);
+    calendly=new Promise((resolve,reject)=>{
+      const s=document.createElement('script');
+      s.src='https://assets.calendly.com/assets/external/widget.js';s.async=true;
+      s.onload=()=>window.Calendly?resolve(window.Calendly):reject();
+      s.onerror=reject;
+      document.head.appendChild(s);
+    });
+    return calendly;
+  }
+  bookBtn.addEventListener('pointerenter',loadCalendly,{once:true});
+  bookBtn.addEventListener('focus',loadCalendly,{once:true});
+  bookBtn.addEventListener('click',()=>{
+    const url=`${CAL}&a1=${encodeURIComponent(brief().sentence)}`;
+    loadCalendly().then(C=>C.initPopupWidget({url})).catch(()=>window.open(url,'_blank','noopener'));
+  });
 })();

@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eco Frames Vision — 3D logo</title>
+<script type="module" src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<style>
+  html,body{margin:0;height:100%;background:#F7F2EB;font-family:Inter,system-ui,sans-serif;color:#262820}
+  model-viewer{width:100%;height:100%;--poster-color:transparent}
+  .hint{position:fixed;left:0;right:0;bottom:18px;text-align:center;font-size:12px;letter-spacing:.2em;text-transform:uppercase;opacity:.55}
+</style>
+</head>
+<body>
+<!-- Drag to orbit, scroll to zoom. Turntable auto-rotates when idle. -->
+<model-viewer src="ecoframes-vision-logo-3d.glb" alt="Eco Frames Vision 3D logo"
+  camera-controls auto-rotate auto-rotate-delay="1500" rotation-per-second="18deg"
+  camera-orbit="-20deg 76deg auto" field-of-view="24deg"
+  exposure="1.05" shadow-intensity="0.9" shadow-softness="0.9" environment-image="neutral" interaction-prompt="none">
+</model-viewer>
+<div class="hint">Drag to orbit · scroll to zoom</div>
+</body>
+</html>

@@ -18,3 +18,7 @@ laptop section/
 # Separate Next.js sandbox project — has its own git repo (created by
 # create-next-app). Not part of the live site.
 laptop-reveal/
+
+# Netlify: local link state and the assembled publish folder
+.netlify/
+dist/
