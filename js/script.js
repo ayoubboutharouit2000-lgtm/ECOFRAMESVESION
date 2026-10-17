@@ -90,6 +90,27 @@ checkReveal();
 // failsafe: force-reveal anything still hidden after 2.6s
 setTimeout(()=>{document.querySelectorAll('[data-reveal]').forEach(el=>{if(!el._rev){el._rev=true;el.style.transition='none';el.style.opacity='1';el.style.transform='none';}});},2600);
 
+// dot-matrix headline: dotted copy underneath, solid copy revealed by a slanted wipe scrubbed by scroll position
+document.querySelectorAll('[data-dotwipe]').forEach(h=>{
+  const html=h.innerHTML;
+  h.innerHTML='<span class="dw-dots" aria-hidden="true">'+html+'</span><span class="dw-solid">'+html+'</span>';
+  const solid=h.querySelector('.dw-solid');
+  if(prefersReduce)return;
+  const slant=18; // % of width the wipe edge leans across the block's height
+  // wipe starts when the heading's top is at 85% of the viewport, completes at 35%
+  const from=.85,to=.35;
+  let last=-1,queued=false;
+  const update=()=>{
+    queued=false;
+    const p=Math.min(1,Math.max(0,(from-h.getBoundingClientRect().top/innerHeight)/(from-to)));
+    if(p===last)return;last=p;
+    const x=p*(100+slant);
+    solid.style.clipPath=p>=1?'none':`polygon(0 0,${x}% 0,${x-slant}% 100%,0 100%)`;
+  };
+  const queue=()=>{if(!queued){queued=true;requestAnimationFrame(update);}};
+  addEventListener('scroll',queue,{passive:true});addEventListener('resize',queue);update();
+});
+
 // hero timecode (vanity)
 const tc=document.getElementById('tcode');
 const t0tc=performance.now();
@@ -362,6 +383,14 @@ setTimeout(checkMotion,100);
   modalClose.addEventListener('click',closeScatterModal);
   modal.addEventListener('click',e=>{if(e.target===modal) closeScatterModal();});
   addEventListener('keydown',e=>{if(e.key==='Escape' && modal.classList.contains('on')) closeScatterModal();});
+
+  // phones: no hover, so glow whichever cards cross a band at mid-screen
+  if(matchMedia('(max-width:767px)').matches){
+    const io=new IntersectionObserver(entries=>{
+      entries.forEach(e=>e.target.classList.toggle('is-lit',e.isIntersecting));
+    },{rootMargin:'-40% 0px -40% 0px',threshold:0});
+    cards.forEach(c=>io.observe(c));
+  }
 
   // cursor parallax — cards nearer the front of the pile (higher data-z)
   // drift further, giving the pile a subtle sense of depth as the pointer

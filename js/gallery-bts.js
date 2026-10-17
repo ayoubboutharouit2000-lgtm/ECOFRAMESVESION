@@ -126,8 +126,13 @@
     requestAnimationFrame(tick);
   }
 
-  // Photos further down the accordion load ahead of time so none pops in late.
-  imgs.forEach((img) => (img.loading = 'eager'));
+  // Photos further down the accordion load ahead of time so none pops in late —
+  // but only once the section is within a couple of screens, not on page load.
+  new IntersectionObserver((entries, io) => {
+    if (!entries.some((e) => e.isIntersecting)) return;
+    imgs.forEach((img) => (img.loading = 'eager'));
+    io.disconnect();
+  }, { rootMargin: '200% 0px' }).observe(root);
 
   layout();
   addEventListener('scroll', measure, { passive: true });

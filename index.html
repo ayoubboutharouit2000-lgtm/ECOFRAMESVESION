@@ -6,8 +6,8 @@
 <title>EcoFrames Vision — Cinematic Video Production Studio · Marrakech</title>
 
 <!-- ===== SEO: primary meta ===== -->
-<meta name="description" content="EcoFrames Vision is a cinematic video production studio in Marrakech, Morocco — wedding films, brand films, documentaries, commercials and event coverage. Available worldwide. Book a free 30-minute call." />
-<meta name="keywords" content="video production Marrakech, cinematic production Morocco, wedding videographer Marrakech, brand films, documentary, commercial production, event coverage, EcoFrames Vision" />
+<meta name="description" content="EcoFrames Vision is a cinematic video production studio in Marrakech, Morocco — wedding films, brand films &amp; commercials, corporate videos, documentaries, event coverage, drone filming, motion design and live streaming. Available worldwide. Book a free 30-minute call." />
+<meta name="keywords" content="EcoFrames Vision, video production Marrakech, cinematic video production Morocco, wedding videographer Marrakech, destination wedding videographer Morocco, corporate video Marrakech, documentary production Morocco, commercial production Morocco, event coverage Marrakech, event videographer Morocco, drone videographer Marrakech, aerial filming Morocco, motion design Morocco, live streaming Marrakech" />
 <meta name="author" content="EcoFrames Vision" />
 <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
 <meta name="theme-color" content="#F7F2EB" />
@@ -18,16 +18,17 @@
 <meta name="ICBM" content="31.6295, -7.9811" />
 
 <!-- ===== Icons ===== -->
-<link rel="icon" type="image/png" href="assets/icons/favicon.png" />
-<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+<link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg?v=20261016" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon.png?v=20261016" />
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png?v=20261016" />
 
 <!-- ===== Open Graph (Facebook / WhatsApp / LinkedIn) ===== -->
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="EcoFrames Vision" />
 <meta property="og:title" content="EcoFrames Vision — Cinematic Video Production Studio · Marrakech" />
-<meta property="og:description" content="Cinematic video production studio in Marrakech, Morocco. Wedding films, brand films, documentaries, commercials and event coverage — available worldwide." />
+<meta property="og:description" content="Cinematic video production studio in Marrakech, Morocco. Wedding films, brand films &amp; commercials, corporate videos, documentaries, event coverage, drone filming, motion design and live streaming — available worldwide." />
 <meta property="og:url" content="https://ecoframesvision.com/" />
-<meta property="og:image" content="assets/images/og-image.jpg" />
+<meta property="og:image" content="https://ecoframesvision.com/assets/images/og-image.jpg" />
 <meta property="og:image:width" content="1280" />
 <meta property="og:image:height" content="714" />
 <meta property="og:image:alt" content="EcoFrames Vision — cinematic production still" />
@@ -36,8 +37,8 @@
 <!-- ===== Twitter / X ===== -->
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="EcoFrames Vision — Cinematic Video Production Studio · Marrakech" />
-<meta name="twitter:description" content="Cinematic video production studio in Marrakech, Morocco. Wedding films, brand films, documentaries, commercials and event coverage — available worldwide." />
-<meta name="twitter:image" content="assets/images/og-image.jpg" />
+<meta name="twitter:description" content="Cinematic video production studio in Marrakech, Morocco. Wedding films, brand films &amp; commercials, corporate videos, documentaries, event coverage, drone filming, motion design and live streaming — available worldwide." />
+<meta name="twitter:image" content="https://ecoframesvision.com/assets/images/og-image.jpg" />
 <meta name="twitter:image:alt" content="EcoFrames Vision — cinematic production still" />
 
 <!-- ===== Structured data (Schema.org) ===== -->
@@ -48,7 +49,7 @@
   "@id": "https://ecoframesvision.com/#business",
   "name": "EcoFrames Vision",
   "alternateName": "EcoFrames Vision Production Studio",
-  "description": "Cinematic video production studio in Marrakech, Morocco — wedding films, brand films, documentaries, commercials and event coverage. Available worldwide.",
+  "description": "Cinematic video production studio in Marrakech, Morocco — wedding films, brand films & commercials, corporate videos, documentaries, event coverage, drone filming, motion design and live streaming. Available worldwide.",
   "url": "https://ecoframesvision.com/",
   "image": "https://ecoframesvision.com/assets/images/og-image.jpg",
   "logo": "https://ecoframesvision.com/assets/icons/apple-touch-icon.png",
@@ -69,9 +70,13 @@
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,500&family=Bebas+Neue&display=swap" rel="stylesheet" />
-<link rel="stylesheet" href="css/styles.css?v=20261003-8" />
-<link rel="stylesheet" href="js/hero-cards/hero-cards.css?v=20261003-5" />
+<!-- fonts load without blocking first paint (display=swap shows fallback text meanwhile) -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,500&family=Bebas+Neue&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
+<noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;1,300;1,500&family=Bebas+Neue&display=swap" rel="stylesheet" /></noscript>
+<link rel="stylesheet" href="css/styles.css?v=20261016-2" />
+<link rel="stylesheet" href="js/hero-cards/hero-cards.css?v=20261016-5" />
+<!-- the hero poster is the first big paint; fetch it now instead of after the hero bundle mounts -->
+<link rel="preload" as="image" href="assets/videos/hero/hero-poster.jpg?v=20261016" fetchpriority="high" />
 </head>
 <body>
 <!-- ===== BRAND LOGO (ECO FRAMES VISION, source: assets/images/brand/ecoframes-vision-logo.svg) ===== -->
@@ -147,10 +152,14 @@
 <div class="hero-cards"
      data-hero-cards
      data-id="top"
-     data-video="assets/videos/hero/hero.mp4"
-     data-poster="assets/videos/hero/hero-poster.jpg"
+     data-video="assets/videos/hero/hero.mp4?v=20261016"
+     data-poster="assets/videos/hero/hero-poster.jpg?v=20261016"
      data-logo-model="assets/images/brand/3d/ecoframes-vision-logo-3d-reels.glb"
      data-offset-top="78px"></div>
+<script>
+  // phones get a 720p cut of the showreel (~3.6 MB instead of ~8.7 MB); runs before the hero module reads data-video
+  if (matchMedia('(max-width: 900px)').matches) document.querySelector('[data-hero-cards]').dataset.video = 'assets/videos/hero/hero-720.mp4?v=20261016';
+</script>
 
 <!-- ===== STATEMENT ===== -->
 <section class="statement" data-recede>
@@ -158,10 +167,10 @@
     <div class="passion-card">
       <!-- background-free cut-outs standing on the card; their heads break past its top edge -->
       <figure class="pop pop--left" style="--pop:24%" data-reveal>
-        <span class="pop-rise"><img class="pop-cut" src="assets/images/founders/passion-crew-cut.webp" alt="The EcoFrames crew setting up a cinema camera on set" width="746" height="1120" loading="lazy"></span>
+        <span class="pop-rise"><img class="pop-cut" src="assets/images/founders/passion-crew-cut.webp" srcset="assets/images/founders/passion-crew-cut-400w.webp 400w, assets/images/founders/passion-crew-cut.webp 746w" sizes="(max-width: 900px) 50vw, 30vw" alt="The EcoFrames crew setting up a cinema camera on set" width="746" height="1120" fetchpriority="high"></span>
       </figure>
       <figure class="pop pop--right" style="--pop:24%" data-reveal data-d="1">
-        <span class="pop-rise" aria-hidden="true"><img class="pop-cut" src="assets/images/founders/passion-crew-cut.webp" alt="" width="746" height="1120" loading="lazy"></span>
+        <span class="pop-rise"><img class="pop-cut" src="assets/images/founders/passion-camera-cut.webp" srcset="assets/images/founders/passion-camera-cut-480w.webp 480w, assets/images/founders/passion-camera-cut-800w.webp 800w, assets/images/founders/passion-camera-cut.webp 1080w" sizes="(max-width: 900px) 45vw, 26vw" alt="An EcoFrames filmmaker checking a cinema camera on the pitch" width="1080" height="1713"></span>
       </figure>
       <div class="passion-copy">
         <h2 class="passion-title" data-reveal>Made by people who love the craft</h2>
@@ -191,7 +200,7 @@
             <span class="scatter-url">ecoframesvision.com/films</span>
           </span>
           <span class="scatter-imgwrap">
-            <img src="assets/images/work/wedding-best-of.jpg" alt="Wedding Best Of" loading="lazy" />
+            <img src="assets/images/work/wedding-best-of.webp" srcset="assets/images/work/wedding-best-of-500w.webp 500w, assets/images/work/wedding-best-of.webp 1000w" sizes="(max-width: 900px) 45vw, 27vw" alt="Wedding Best Of" loading="lazy" />
             <span class="scatter-tag">Wedding Film</span>
             <span class="scatter-play"><span class="scatter-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span>
           </span>
@@ -208,7 +217,7 @@
                 data-cat="Brand Production" data-title="Corporate Film"
                 aria-label="Play Corporate Film — Brand Production">
           <span class="scatter-imgwrap">
-            <img src="assets/images/work/corporate-film.jpg" alt="Corporate Film" loading="lazy" />
+            <img src="assets/images/work/corporate-film.webp" srcset="assets/images/work/corporate-film-500w.webp 500w, assets/images/work/corporate-film.webp 1000w" sizes="(max-width: 900px) 45vw, 27vw" alt="Corporate Film" loading="lazy" />
             <span class="scatter-tag">Brand Production</span>
             <span class="scatter-play"><span class="scatter-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span>
           </span>
@@ -226,7 +235,7 @@
                 data-cat="Property Showcase" data-title="Real Estate Film"
                 aria-label="Play Real Estate Film — Property Showcase">
           <span class="scatter-imgwrap">
-            <img src="assets/images/work/real-estate.jpg" alt="Real Estate Film" loading="lazy" />
+            <img src="assets/images/work/real-estate.webp" srcset="assets/images/work/real-estate-500w.webp 500w, assets/images/work/real-estate.webp 1000w" sizes="(max-width: 900px) 45vw, 27vw" alt="Real Estate Film" loading="lazy" />
             <span class="scatter-tag">Property Showcase</span>
             <span class="scatter-play"><span class="scatter-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span>
           </span>
@@ -243,7 +252,7 @@
                 data-cat="Corporate" data-title="Atlantic Food Best Of"
                 aria-label="Play Atlantic Food Best Of — Corporate">
           <span class="scatter-imgwrap">
-            <img src="assets/images/work/atlantic-food.jpg" alt="Atlantic Food Best Of" loading="lazy" />
+            <img src="assets/images/work/atlantic-food.webp" srcset="assets/images/work/atlantic-food-500w.webp 500w, assets/images/work/atlantic-food.webp 1000w" sizes="(max-width: 900px) 45vw, 27vw" alt="Atlantic Food Best Of" loading="lazy" />
             <span class="scatter-tag">Corporate</span>
             <span class="scatter-play"><span class="scatter-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span>
           </span>
@@ -260,7 +269,7 @@
                 data-cat="Social Media" data-title="Reel Content Creation"
                 aria-label="Play Reel Content Creation — Social Media">
           <span class="scatter-imgwrap">
-            <img src="assets/images/work/reel-content.jpg" alt="Reel Content Creation" loading="lazy" />
+            <img src="assets/images/work/reel-content.webp" srcset="assets/images/work/reel-content-500w.webp 500w, assets/images/work/reel-content.webp 1000w" sizes="(max-width: 900px) 45vw, 27vw" alt="Reel Content Creation" loading="lazy" />
             <span class="scatter-tag">Social Media</span>
             <span class="scatter-play"><span class="scatter-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span>
           </span>
@@ -277,7 +286,7 @@
                 data-cat="Behind the Scenes" data-title="BTS — Free Fire Project"
                 aria-label="Play BTS — Free Fire Project — Behind the Scenes">
           <span class="scatter-imgwrap">
-            <img src="assets/images/work/bts-freefire.jpg" alt="BTS — Free Fire Project" loading="lazy" />
+            <img src="assets/images/work/bts-freefire.webp" srcset="assets/images/work/bts-freefire-500w.webp 500w, assets/images/work/bts-freefire.webp 1000w" sizes="(max-width: 900px) 45vw, 27vw" alt="BTS — Free Fire Project" loading="lazy" />
             <span class="scatter-tag">Behind the Scenes</span>
             <span class="scatter-play"><span class="scatter-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span>
           </span>
@@ -295,7 +304,7 @@
                 data-cat="Commercial" data-title="Car Sticker"
                 aria-label="Play Car Sticker — Commercial">
           <span class="scatter-imgwrap">
-            <img src="assets/images/work/car-sticker.jpg" alt="Car Sticker" loading="lazy" />
+            <img src="assets/images/work/car-sticker.webp" srcset="assets/images/work/car-sticker-500w.webp 500w, assets/images/work/car-sticker.webp 1000w" sizes="(max-width: 900px) 45vw, 27vw" alt="Car Sticker" loading="lazy" />
             <span class="scatter-tag">Commercial</span>
             <span class="scatter-play"><span class="scatter-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span>
           </span>
@@ -312,7 +321,7 @@
                 data-cat="Event Coverage" data-title="Best of Event MCM"
                 aria-label="Play Best of Event MCM — Event Coverage">
           <span class="scatter-imgwrap">
-            <img src="assets/images/work/event-mcm.jpg" alt="Best of Event MCM" loading="lazy" />
+            <img src="assets/images/work/event-mcm.webp" srcset="assets/images/work/event-mcm-500w.webp 500w, assets/images/work/event-mcm.webp 1000w" sizes="(max-width: 900px) 45vw, 27vw" alt="Best of Event MCM" loading="lazy" />
             <span class="scatter-tag">Event Coverage</span>
             <span class="scatter-play"><span class="scatter-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span>
           </span>
@@ -329,7 +338,7 @@
                 data-cat="Event Coverage" data-title="Prague Folklore Days Best Of"
                 aria-label="Play Prague Folklore Days Best Of — Event Coverage">
           <span class="scatter-imgwrap">
-            <img src="assets/images/work/prague-folklore.jpg" alt="Prague Folklore Days Best Of" loading="lazy" />
+            <img src="assets/images/work/prague-folklore.webp" srcset="assets/images/work/prague-folklore-500w.webp 500w, assets/images/work/prague-folklore.webp 1000w" sizes="(max-width: 900px) 45vw, 27vw" alt="Prague Folklore Days Best Of" loading="lazy" />
             <span class="scatter-tag">Event Coverage</span>
             <span class="scatter-play"><span class="scatter-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span>
           </span>
@@ -346,7 +355,7 @@
                 data-cat="Content Creation" data-title="Reel — Style Editing"
                 aria-label="Play Reel — Style Editing — Content Creation">
           <span class="scatter-imgwrap">
-            <img src="assets/images/work/reel-style-editing.jpg" alt="Reel — Style Editing" loading="lazy" />
+            <img src="assets/images/work/reel-style-editing.webp" srcset="assets/images/work/reel-style-editing-500w.webp 500w, assets/images/work/reel-style-editing.webp 1000w" sizes="(max-width: 900px) 45vw, 27vw" alt="Reel — Style Editing" loading="lazy" />
             <span class="scatter-tag">Content Creation</span>
             <span class="scatter-play"><span class="scatter-play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></span></span>
           </span>
@@ -390,16 +399,16 @@
 <section class="bts" id="gallery" data-recede aria-label="Gallery: behind the lens">
   <div class="bts-sticky">
     <div class="bts-frame">
-      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-5.jpg?v=20260709-2" alt="Guest at the buffet" loading="lazy" decoding="async" /></figure>
-      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-7.jpg?v=20260709-2" alt="Lifting the cloche" loading="lazy" decoding="async" /></figure>
-      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-15.jpg?v=20260709-2" alt="Tropical fruit display" loading="lazy" decoding="async" /></figure>
-      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-10.jpg?v=20260709-2" alt="Skewers, plated" loading="lazy" decoding="async" /></figure>
-      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-23.jpg?v=20260709-2" alt="Chef serving from the chafing dish" loading="lazy" decoding="async" /></figure>
-      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-21.jpg?v=20260709-2" alt="Salad station" loading="lazy" decoding="async" /></figure>
-      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-6.jpg?v=20260709-2" alt="The full buffet" loading="lazy" decoding="async" /></figure>
-      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-37.jpg?v=20260709-2" alt="Plated main course" loading="lazy" decoding="async" /></figure>
-      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-26.jpg?v=20260709-2" alt="Fresh bread rolls" loading="lazy" decoding="async" /></figure>
-      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-1.jpg?v=20260709-2" alt="Silver service" loading="lazy" decoding="async" /></figure>
+      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-5.webp?v=20261005-1" srcset="assets/images/gallery/restaurant-5-800w.webp?v=20261005-1 800w, assets/images/gallery/restaurant-5-1200w.webp?v=20261005-1 1200w, assets/images/gallery/restaurant-5.webp?v=20261005-1 1600w" sizes="(max-width: 900px) 100vw, 62vw" alt="Guest at the buffet" loading="lazy" decoding="async" /></figure>
+      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-7.webp?v=20261005-1" srcset="assets/images/gallery/restaurant-7-800w.webp?v=20261005-1 800w, assets/images/gallery/restaurant-7-1200w.webp?v=20261005-1 1200w, assets/images/gallery/restaurant-7.webp?v=20261005-1 1600w" sizes="(max-width: 900px) 100vw, 62vw" alt="Lifting the cloche" loading="lazy" decoding="async" /></figure>
+      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-15.webp?v=20261005-1" srcset="assets/images/gallery/restaurant-15-800w.webp?v=20261005-1 800w, assets/images/gallery/restaurant-15-1200w.webp?v=20261005-1 1200w, assets/images/gallery/restaurant-15.webp?v=20261005-1 1600w" sizes="(max-width: 900px) 100vw, 62vw" alt="Tropical fruit display" loading="lazy" decoding="async" /></figure>
+      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-10.webp?v=20261005-1" srcset="assets/images/gallery/restaurant-10-800w.webp?v=20261005-1 800w, assets/images/gallery/restaurant-10-1200w.webp?v=20261005-1 1200w, assets/images/gallery/restaurant-10.webp?v=20261005-1 1600w" sizes="(max-width: 900px) 100vw, 62vw" alt="Skewers, plated" loading="lazy" decoding="async" /></figure>
+      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-23.webp?v=20261005-1" srcset="assets/images/gallery/restaurant-23-800w.webp?v=20261005-1 800w, assets/images/gallery/restaurant-23-1200w.webp?v=20261005-1 1200w, assets/images/gallery/restaurant-23.webp?v=20261005-1 1600w" sizes="(max-width: 900px) 100vw, 62vw" alt="Chef serving from the chafing dish" loading="lazy" decoding="async" /></figure>
+      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-21.webp?v=20261005-1" srcset="assets/images/gallery/restaurant-21-800w.webp?v=20261005-1 800w, assets/images/gallery/restaurant-21-1200w.webp?v=20261005-1 1200w, assets/images/gallery/restaurant-21.webp?v=20261005-1 1600w" sizes="(max-width: 900px) 100vw, 62vw" alt="Salad station" loading="lazy" decoding="async" /></figure>
+      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-6.webp?v=20261005-1" srcset="assets/images/gallery/restaurant-6-800w.webp?v=20261005-1 800w, assets/images/gallery/restaurant-6-1200w.webp?v=20261005-1 1200w, assets/images/gallery/restaurant-6.webp?v=20261005-1 1600w" sizes="(max-width: 900px) 100vw, 62vw" alt="The full buffet" loading="lazy" decoding="async" /></figure>
+      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-37.webp?v=20261005-1" srcset="assets/images/gallery/restaurant-37-800w.webp?v=20261005-1 800w, assets/images/gallery/restaurant-37-1200w.webp?v=20261005-1 1200w, assets/images/gallery/restaurant-37.webp?v=20261005-1 1600w" sizes="(max-width: 900px) 100vw, 62vw" alt="Plated main course" loading="lazy" decoding="async" /></figure>
+      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-26.webp?v=20261005-1" srcset="assets/images/gallery/restaurant-26-800w.webp?v=20261005-1 800w, assets/images/gallery/restaurant-26-1200w.webp?v=20261005-1 1200w, assets/images/gallery/restaurant-26.webp?v=20261005-1 1600w" sizes="(max-width: 900px) 100vw, 62vw" alt="Fresh bread rolls" loading="lazy" decoding="async" /></figure>
+      <figure class="bts-slide"><img src="assets/images/gallery/restaurant-1.webp?v=20261005-1" srcset="assets/images/gallery/restaurant-1-800w.webp?v=20261005-1 800w, assets/images/gallery/restaurant-1-1200w.webp?v=20261005-1 1200w, assets/images/gallery/restaurant-1.webp?v=20261005-1 1600w" sizes="(max-width: 900px) 100vw, 62vw" alt="Silver service" loading="lazy" decoding="async" /></figure>
     </div>
     <h2 class="bts-title"><span class="bts-w bts-top">Behind</span> <span class="bts-w bts-bot">the <span class="serif">lens</span></span></h2>
     <div class="bts-meta" aria-hidden="true">
@@ -421,7 +430,7 @@
     </div>
 
     <div class="svc-list">
-      <div class="svc" data-reveal style="--svc-bg:url('/assets/images/services/wedding.jpg')">
+      <div class="svc" data-reveal style="--svc-bg:url('/assets/images/services/wedding.webp')">
         <div class="n">01</div>
         <div class="body">
           <h3>Wedding Films</h3>
@@ -430,7 +439,7 @@
         </div>
       </div>
 
-      <div class="svc" data-reveal style="--svc-bg:url('/assets/images/services/corporate-content.jpg');--svc-bg-pos:center 33%">
+      <div class="svc" data-reveal style="--svc-bg:url('/assets/images/services/corporate-content.webp');--svc-bg-pos:center 33%">
         <div class="n">02</div>
         <div class="body">
           <h3>Corporate Content</h3>
@@ -439,7 +448,7 @@
         </div>
       </div>
 
-      <div class="svc" data-reveal style="--svc-bg:url('/assets/images/services/documentary.jpg');--svc-bg-pos:center 42%">
+      <div class="svc" data-reveal style="--svc-bg:url('/assets/images/services/documentary.webp');--svc-bg-pos:center 42%">
         <div class="n">03</div>
         <div class="body">
           <h3>Documentary Storytelling</h3>
@@ -448,7 +457,7 @@
         </div>
       </div>
 
-      <div class="svc" data-reveal style="--svc-bg:url('/assets/images/services/aerial-cinematography.jpg')">
+      <div class="svc" data-reveal style="--svc-bg:url('/assets/images/services/aerial-cinematography.webp')">
         <div class="n">04</div>
         <div class="body">
           <h3>Aerial Cinematography</h3>
@@ -457,7 +466,7 @@
         </div>
       </div>
 
-      <div class="svc" data-reveal style="--svc-bg:url('/assets/images/services/motion-design.jpg');--svc-bg-pos:center 46%">
+      <div class="svc" data-reveal style="--svc-bg:url('/assets/images/services/motion-design.webp');--svc-bg-pos:center 46%">
         <div class="n">05</div>
         <div class="body">
           <h3>Motion Design</h3>
@@ -466,7 +475,7 @@
         </div>
       </div>
 
-      <div class="svc" data-reveal style="--svc-bg:url('/assets/images/services/live-streaming.jpg')">
+      <div class="svc" data-reveal style="--svc-bg:url('/assets/images/services/live-streaming.webp')">
         <div class="n">06</div>
         <div class="body">
           <h3>Live Streaming</h3>
@@ -482,7 +491,7 @@
 <section class="about sheet" id="about" data-recede>
   <div class="wrap about-grid">
     <div class="about-media" data-reveal>
-      <img src="assets/images/studio.jpg" alt="EcoFrames Vision Studio" />
+      <img src="assets/images/studio.webp" alt="EcoFrames Vision Studio" loading="lazy" decoding="async" />
     </div>
     <div class="about-copy">
       <div class="kicker" data-reveal>The studio</div>
@@ -525,10 +534,10 @@
     </div>
 
     <figure class="fsplit-card" data-side="left">
-      <img src="assets/images/founders/ayoub.jpg" alt="Ayoub Boutharouit, co-founder and director of photography" />
+      <img src="assets/images/founders/ayoub.webp" alt="Ayoub Boutharouit, co-founder and director of photography" loading="lazy" decoding="async" />
     </figure>
     <figure class="fsplit-card" data-side="right">
-      <img src="assets/images/founders/mohamed-web.jpg" alt="Mohamed Reda El Guermadi, co-founder and lead video editor" />
+      <img src="assets/images/founders/mohamed-web.webp" alt="Mohamed Reda El Guermadi, co-founder and lead video editor" loading="lazy" decoding="async" />
     </figure>
   </div>
 </section>
@@ -539,7 +548,7 @@
   <div class="wrap">
     <div class="contact-inner">
       <div class="kicker kick" data-reveal>Let's roll</div>
-      <h2 data-reveal data-d="1">Tell us <span class="serif">your</span> story.</h2>
+      <h2 class="dotwipe" data-dotwipe>Tell us <span class="serif">your</span> story.</h2>
       <p class="sub" data-reveal data-d="2">A wedding, a brand film, a documentary you've been carrying for years — bring us the vision and we'll find its frame. The first conversation is always free.</p>
       <!-- what happens on the call -->
       <ol class="cal-steps" data-reveal data-d="2">
@@ -616,12 +625,14 @@
   </div>
 </div>
 
-<!-- ===== HERO CARDS ===== -->
-<script type="module" src="js/hero-cards/hero-cards.js?v=20261003-5"></script>
-
-<script src="js/script.js?v=20261003-2" defer></script>
+<script src="js/script.js?v=20261007-1" defer></script>
 <script src="js/tile-flight.js?v=20261003-4" defer></script>
 <script src="js/founders-split.js?v=20261003-1" defer></script>
-<script src="js/gallery-bts.js?v=20261002-1" defer></script>
+<script src="js/gallery-bts.js?v=20261005-1" defer></script>
+
+<!-- ===== HERO CARDS ===== -->
+<!-- last on purpose: deferred scripts run in document order, so the page's own scripts
+     (reveals, nav) don't wait behind this ~940 KB React/three.js bundle -->
+<script type="module" src="js/hero-cards/hero-cards.js?v=20261016-5"></script>
 </body>
 </html>
