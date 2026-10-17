@@ -45,8 +45,8 @@ for p in sorted(refs):
     os.makedirs(os.path.join(DIST, os.path.dirname(p)), exist_ok=True)
     shutil.copy2(p, os.path.join(DIST, p))
 
-# Root files crawlers fetch directly; nothing in the page links to them.
-for p in ('robots.txt', 'sitemap.xml'):
+# Root files crawlers fetch directly (incl. the Search Console verification file); nothing links to them.
+for p in ('robots.txt', 'sitemap.xml', 'google80340da017fbbcab.html'):
     shutil.copy2(p, os.path.join(DIST, p))
 
 # Netlify defaults every file to max-age=0 (re-checked on each visit). Media can be cached
