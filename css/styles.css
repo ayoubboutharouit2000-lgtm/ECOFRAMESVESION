@@ -409,8 +409,25 @@ section{position:relative}
 .svc p{color:var(--ink-soft);font-size:15.5px;line-height:1.6;max-width:540px;margin-top:14px}
 .svc .tags{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
 .svc .tags span{font-size:12px;color:var(--muted);border:1px solid var(--line);border-radius:100px;padding:5px 13px;letter-spacing:.04em}
-.svc-more{display:inline-flex;gap:8px;margin-top:18px;font-size:13.5px;font-weight:500;color:var(--accent-ink);letter-spacing:.02em;border-bottom:1px solid currentColor;padding-bottom:2px}
-.svc-more:hover{color:var(--ink)}
+.svc-detail{margin-top:16px;max-width:600px}
+.svc-detail summary{display:inline-flex;align-items:center;gap:8px;cursor:pointer;list-style:none;font-size:13.5px;font-weight:500;color:var(--accent-ink);letter-spacing:.02em;border-bottom:1px solid currentColor;padding-bottom:2px}
+.svc-detail summary::-webkit-details-marker{display:none}
+.svc-detail summary::after{content:"+";transition:transform .3s var(--ease)}
+.svc-detail[open] summary::after{transform:rotate(45deg)}
+.svc-detail summary:hover{color:var(--ink)}
+.svc-detail p,.svc-detail ul{color:var(--ink-soft);font-size:15px;line-height:1.65;margin-top:12px}
+.svc-detail ul{padding-left:18px;display:grid;gap:6px}
+.svc-detail b{font-weight:600;color:var(--ink)}
+/* FAQ under the services list */
+.faq{margin-top:clamp(48px,7vh,80px);max-width:860px}
+.faq-title{font-family:var(--font-display);font-weight:400;letter-spacing:var(--display-track);line-height:1;font-size:clamp(34px,4.4vw,60px);margin:16px 0 18px}
+.faq details{border-top:1px solid var(--line);padding:20px 0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;font-family:var(--font-display);font-weight:400;letter-spacing:var(--display-track);font-size:clamp(21px,2vw,28px);line-height:1.1}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--accent-ink);transition:transform .3s var(--ease)}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--ink-soft);font-size:15.5px;line-height:1.65;margin-top:12px;max-width:680px}
 @media (max-width:760px){.svc{gap:18px}}
 
 /* ---------- about ---------- */

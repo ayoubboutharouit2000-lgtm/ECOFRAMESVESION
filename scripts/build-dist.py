@@ -30,8 +30,7 @@ def srcset_refs(text):
 def norm(path):
     return path.lstrip('./').lstrip('/')
 
-# every page of the site; assets are found by following what each one references
-sources = ['index.html', 'event-videographer-marrakech/index.html'] + glob.glob('css/*.css')
+sources = ['index.html'] + glob.glob('css/*.css')
 refs, queue = set(sources), list(sources)
 while queue:
     text = open(queue.pop(), errors='ignore').read()
