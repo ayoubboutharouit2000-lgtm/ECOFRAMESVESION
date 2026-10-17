@@ -397,10 +397,11 @@ section{position:relative}
 /* per-service hover background — --svc-bg is set inline per .svc row */
 .svc::before{content:"";position:absolute;left:-100vw;right:-100vw;top:0;bottom:0;
   background-color:var(--bg-2);
-  background-image:linear-gradient(90deg,rgba(247,242,235,.9) 0%,rgba(247,242,235,.7) 45%,rgba(247,242,235,.9) 100%),var(--svc-bg,none);
   background-size:cover;background-position:var(--svc-bg-pos,center);background-repeat:no-repeat;
   opacity:0;transform:scale(1.04);filter:blur(0px);
   transition:opacity .6s var(--ease),transform .9s var(--ease),filter .6s var(--ease);z-index:-1}
+/* the photo only loads where hover exists — phones never show it, so they never download it */
+@media (hover:hover){.svc::before{background-image:linear-gradient(90deg,rgba(247,242,235,.9) 0%,rgba(247,242,235,.7) 45%,rgba(247,242,235,.9) 100%),var(--svc-bg,none)}}
 .svc:hover::before{opacity:1;transform:scale(1);filter:blur(6px)}
 .svc .n{font-family:var(--font-sans);font-weight:500;font-size:14px;color:var(--muted);font-variant-numeric:tabular-nums;letter-spacing:.05em;align-self:flex-start;padding-top:8px}
 .svc .body{max-width:760px}
