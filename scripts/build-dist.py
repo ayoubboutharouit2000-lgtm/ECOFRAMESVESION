@@ -51,9 +51,22 @@ for p in ('robots.txt', 'sitemap.xml', 'google80340da017fbbcab.html'):
 
 # Netlify defaults every file to max-age=0 (re-checked on each visit). Media can be cached
 # for a week: when replacing one, bump its ?v= in index.html (as the hero video does) so
-# returning visitors fetch the new file. HTML/JS/CSS keep Netlify's default.
+# returning visitors fetch the new file. JS/CSS are cached for a year, so every <script>/<link>
+# to them must carry a ?v= (checked below). HTML keeps Netlify's default.
+# The 3D logo gets its real type instead of octet-stream. Netlify still won't brotli it
+# (checked 2026-10-19), so the .glb ships at full size (~290 KB of it is compressible).
 with open(os.path.join(DIST, '_headers'), 'w') as f:
-    f.write('/assets/*\n  Cache-Control: public, max-age=604800\n')
+    f.write('/assets/*\n  Cache-Control: public, max-age=604800\n'
+            '/js/*\n  Cache-Control: public, max-age=31536000, immutable\n'
+            '/css/*\n  Cache-Control: public, max-age=31536000, immutable\n'
+            '/assets/images/brand/3d/*\n  Content-Type: model/gltf-binary\n')
+
+unversioned = re.findall(r'''(?:src|href)\s*=\s*["']((?:js|css)/[^"'?]+)["']''', open('index.html').read())
+if unversioned:
+    print('error: these JS/CSS links need a ?v= (they are cached for a year):')
+    for u in unversioned:
+        print('  ' + u)
+    sys.exit(1)
 
 missing = sorted({m for f in sources for m in PAT_ATTR.findall(open(f, errors='ignore').read()) + srcset_refs(open(f, errors='ignore').read())
                   if not os.path.isfile(norm(m))})
