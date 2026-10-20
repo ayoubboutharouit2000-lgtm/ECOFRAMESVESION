@@ -1,0 +1,16 @@
+// Cloudflare Workers static-assets site: serves dist/ as built by scripts/build-dist.py
+// (deploy with ./deploy-cloudflare.sh). No Worker code; dist/_headers sets the caching.
+{
+  "name": "ecoframes-vision",
+  "compatibility_date": "2026-10-19",
+  // keep the *.workers.dev address and per-version preview URLs (deploy-cloudflare.sh --preview)
+  "workers_dev": true,
+  "preview_urls": true,
+  "routes": [
+    { "pattern": "ecoframesvision.com", "custom_domain": true },
+    { "pattern": "www.ecoframesvision.com", "custom_domain": true }
+  ],
+  "assets": {
+    "directory": "./dist"
+  }
+}

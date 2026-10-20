@@ -22,3 +22,9 @@ laptop-reveal/
 # Netlify: local link state and the assembled publish folder
 .netlify/
 dist/
+
+# Untouched masters of the web videos, re-encoded smaller for Cloudflare (25 MiB per-file limit)
+video-originals/
+
+# Cloudflare: Wrangler's local cache
+.wrangler/

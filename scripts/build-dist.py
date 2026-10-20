@@ -13,6 +13,7 @@ import glob, os, re, shutil, sys
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = 'dist'
 BIG_MB = 100  # anything this large is probably an unencoded master that slipped in
+PAGES_MAX_BYTES = 25 * 1024 * 1024  # Cloudflare's per-file limit for static assets
 
 os.chdir(ROOT)
 shutil.rmtree(DIST, ignore_errors=True)
@@ -76,6 +77,14 @@ print(f'dist/: {len(refs)} files, {total / 1e6:.1f} MB')
 big = sorted(((os.path.getsize(p) / 1e6, p) for p in refs if os.path.getsize(p) > BIG_MB * 1e6), reverse=True)
 for mb, p in big:
     print(f'  warning: {p} is {mb:.0f} MB — compress it for the web before deploying')
+
+# Cloudflare rejects any single static file over 25 MiB, so catch it here rather than mid-upload.
+too_big = sorted(p for p in refs if os.path.getsize(p) > PAGES_MAX_BYTES)
+if too_big:
+    print('error: Cloudflare caps files at 25 MiB; re-encode these (masters go in video-originals/):')
+    for p in too_big:
+        print(f'  {p} ({os.path.getsize(p) / 1048576:.1f} MiB)')
+    sys.exit(1)
 
 if missing:
     print('error: index.html references files that do not exist:')
