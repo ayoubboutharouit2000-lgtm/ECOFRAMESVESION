@@ -58,6 +58,10 @@
       bot1: { x: W * (phone ? 0.12 : 0.14), y: H / 2 },
     };
     meta.style.width = `${W}px`;
+    // The frame and photos keep this fixed size; render() only clips and moves
+    // them (clip-path / transform), so the animation never counts as layout shift.
+    frame.style.width = `${W}px`;
+    frame.style.height = `${H}px`;
     imgs.forEach((img) => (img.style.height = `${H}px`));
   }
 
@@ -81,8 +85,9 @@
     place(bot, L.bot0, L.bot1, split);
     const w = lerp(L.W * 0.6, L.W, open);
     const h = L.H * open;
-    frame.style.width = `${w}px`;
-    frame.style.height = `${h}px`;
+    const insetX = (L.W - w) / 2, insetY = (L.H - h) / 2;
+    frame.style.clipPath =
+      `inset(${insetY.toFixed(2)}px ${insetX.toFixed(2)}px round 16px)`;
     root.classList.toggle('is-open', open > 0.92);
     meta.style.transform = `translate(-50%, ${(h / 2 + L.fontH * 0.55 + 14).toFixed(1)}px)`;
 
@@ -106,10 +111,11 @@
         imgY = p < A2 ? (h - L.H) / 2 : topH - L.H;
       } else if (k === i + 1) { y = topH + g; sh = botH; imgY = 0; }
       else { y = h; sh = 0; imgY = 0; }
-      s.style.top = `${y.toFixed(2)}px`;
-      s.style.height = `${Math.max(0, sh).toFixed(2)}px`;
+      // y / sh are within the open part of the frame, which starts insetY down.
+      const sTop = insetY + y, sBot = L.H - sTop - Math.max(0, sh);
+      s.style.clipPath = `inset(${sTop.toFixed(2)}px 0 ${sBot.toFixed(2)}px round 16px)`;
       s.style.visibility = sh > 0.5 ? 'visible' : 'hidden';
-      imgs[k].style.top = `${imgY.toFixed(2)}px`;
+      imgs[k].style.transform = `translateY(${(sTop + imgY).toFixed(2)}px)`;
     });
 
     const idx = fe > 0.5 ? i + 2 : i + 1;

@@ -963,10 +963,11 @@ footer{background:rgba(234,226,214,.45);backdrop-filter:blur(8px);-webkit-backdr
 .bts{position:relative;background:var(--dark);height:470vh} /* reserve; gallery-bts.js sets the exact scroll length */
 .bts-sticky{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden}
 .bts-frame{position:absolute;left:50%;top:50%;width:0;height:0;transform:translate(-50%,-50%);
-  will-change:width,height}
-.bts-slide{position:absolute;left:0;right:0;margin:0;overflow:hidden;border-radius:16px;background:#2E3026;height:0}
+  clip-path:inset(50%);will-change:clip-path}
+/* every slide covers the whole frame; clip-path cuts out its strip of the accordion */
+.bts-slide{position:absolute;inset:0;margin:0;overflow:hidden;background:#2E3026;clip-path:inset(50% 0)}
 /* each photo is sized to the whole frame; the slide is just a window onto it */
-.bts-slide img{position:absolute;left:0;width:100%;object-fit:cover;display:block}
+.bts-slide img{position:absolute;left:0;top:0;width:100%;object-fit:cover;display:block}
 .bts-title{position:absolute;inset:0;z-index:3;pointer-events:none;margin:0;
   font-family:var(--font-display);font-weight:400;letter-spacing:var(--display-track);line-height:1;color:var(--ink);
   font-size:clamp(52px,7.4vw,132px)}
@@ -984,8 +985,8 @@ footer{background:rgba(234,226,214,.45);backdrop-filter:blur(8px);-webkit-backdr
 .bts.is-static .bts-sticky{position:relative;height:auto;overflow:visible;display:flex;flex-direction:column;align-items:center;gap:28px}
 .bts.is-static .bts-title{position:relative;inset:auto;order:-1;text-align:center}
 .bts.is-static .bts-w{position:static;transform:none}
-.bts.is-static .bts-frame{position:relative;left:auto;top:auto;transform:none;width:min(100%,1000px);height:auto;display:grid;gap:14px}
-.bts.is-static .bts-slide{position:relative;height:auto;aspect-ratio:16/10}
+.bts.is-static .bts-frame{position:relative;left:auto;top:auto;transform:none;width:min(100%,1000px);height:auto;display:grid;gap:14px;clip-path:none}
+.bts.is-static .bts-slide{position:relative;height:auto;aspect-ratio:16/10;clip-path:none;border-radius:16px}
 .bts.is-static .bts-slide img{inset:0;height:100%}
 .bts.is-static .bts-meta{position:relative;left:auto;top:auto;opacity:1;width:min(100%,1000px)}
 
