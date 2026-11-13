@@ -19,9 +19,12 @@ os.chdir(ROOT)
 shutil.rmtree(DIST, ignore_errors=True)
 os.makedirs(DIST)
 
-# attribute values (src=, href=, poster=, data-*=) and quoted/url() strings pointing into assets/js/css
-PAT_ATTR = re.compile(r'''(?:src|href|poster|data-[\w-]+)\s*=\s*["']((?:\./|/)?(?:assets|js|css)/[^"'\s>?#]+)''')
-PAT_STR = re.compile(r'''["'`(]((?:\./|/)?(?:assets|js|css)/[^"'`)\s?#]+)''')
+# attribute values (src=, href=, poster=, data-*=) and quoted/url() strings pointing into assets/js/css,
+# written relative or as a full URL on the site (og:image, JSON-LD)
+SITE = 'https://ecoframesvision.com/'
+PREFIX = r'(?:\./|/|' + re.escape(SITE) + r')?'
+PAT_ATTR = re.compile(r'''(?:src|href|poster|data-[\w-]+)\s*=\s*["'](''' + PREFIX + r'''(?:assets|js|css)/[^"'\s>?#]+)''')
+PAT_STR = re.compile(r'''["'`(](''' + PREFIX + r'''(?:assets|js|css)/[^"'`)\s?#]+)''')
 # every candidate in a srcset="a.webp 800w, b.webp 1600w" list, not just the first
 PAT_SRCSET = re.compile(r'''srcset\s*=\s*["']([^"']+)''')
 
@@ -29,7 +32,7 @@ def srcset_refs(text):
     return [c.split()[0].split('?')[0] for s in PAT_SRCSET.findall(text) for c in s.split(',') if c.strip()]
 
 def norm(path):
-    return path.lstrip('./').lstrip('/')
+    return path.removeprefix(SITE).lstrip('./').lstrip('/')
 
 sources = ['index.html'] + glob.glob('css/*.css')
 refs, queue = set(sources), list(sources)
