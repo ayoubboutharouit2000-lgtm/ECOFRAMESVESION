@@ -501,3 +501,20 @@ setTimeout(checkMotion,100);
     loadCalendly().then(C=>C.initPopupWidget({url})).catch(()=>window.open(url,'_blank','noopener'));
   });
 })();
+
+// GA4 lead tracking. Elements tagged data-track="start_project" (the "Start a project" / "Work with us"
+// buttons) send `start_project_click`; data-track="lead" (Book a call, WhatsApp, email) send
+// `generate_lead`. A finished Calendly booking sends `booking_scheduled`. `from` says which button.
+(function(){
+  const send=(name,params)=>{ if(typeof window.gtag==='function') window.gtag('event',name,params); };
+  const EVENTS={start_project:'start_project_click',lead:'generate_lead'};
+  document.addEventListener('click',e=>{
+    const el=e.target.closest('[data-track]');
+    if(!el||!EVENTS[el.dataset.track])return;
+    send(EVENTS[el.dataset.track],{from:el.dataset.trackFrom||'unknown'});
+  });
+  window.addEventListener('message',e=>{
+    if(e.origin==='https://calendly.com'&&e.data&&e.data.event==='calendly.event_scheduled')
+      send('booking_scheduled',{from:'calendly'});
+  });
+})();
